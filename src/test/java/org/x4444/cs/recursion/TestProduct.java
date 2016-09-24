@@ -6,7 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 
 import org.junit.Test;
-import org.x4444.cs.recursion.Product;
 
 public class TestProduct {
 

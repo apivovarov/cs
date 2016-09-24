@@ -1,5 +1,8 @@
 package org.x4444.cs.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TreeIter {
 
   static class TreeEl {
@@ -22,6 +25,32 @@ public class TreeIter {
     iterTree(el.l);
     System.out.println(el.v);
     iterTree(el.r);
+  }
+
+  public void reverse(TreeEl el) {
+    if (el == null) {
+      return;
+    }
+    TreeEl tmpL = el.l;
+    el.l = el.r;
+    el.r = tmpL;
+    reverse(el.l);
+    reverse(el.r);
+  }
+
+  public List toList(TreeEl root) {
+    List li = new ArrayList();
+    iterTree2(root, li);
+    return li;
+  }
+
+  public void iterTree2(TreeEl el, List li) {
+    if (el == null) {
+      return;
+    }
+    iterTree2(el.l, li);
+    li.add(el.v);
+    iterTree2(el.r, li);
   }
 
   public boolean contains(TreeEl root, int k) {
@@ -65,7 +94,7 @@ public class TreeIter {
 
     // level 3 - 6, 16
     el7.l = el6;
-    el17.r = el16;
+    el17.l = el16;
 
     return el10;
   }
@@ -81,5 +110,8 @@ public class TreeIter {
     System.out.println(d.contains(root, 4));
     System.out.println(d.contains(root, 0));
     System.out.println(d.contains(root, 100));
+
+    d.reverse(root);
+    d.iterTree(root);
   }
 }
