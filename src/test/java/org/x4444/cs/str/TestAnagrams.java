@@ -21,7 +21,7 @@ public class TestAnagrams {
         Assert.assertTrue(eq(p.find("abc", "abc"), new int[] { 0 }));
         Assert.assertTrue(eq(p.find("qmcabt", "abc"), new int[] { 2 }));
         Assert.assertTrue(eq(p.find("abca", "bac"), new int[] { 0, 1 }));
-        Assert.assertTrue(eq(p.find("abc_abc", "abc"), new int[] { 0, 4 }));
+        Assert.assertTrue(eq(p.find("abcZAbC", "abc"), new int[] { 0, 4 }));
     }
 
     /**
