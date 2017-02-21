@@ -8,12 +8,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * TestMergeSort
+ * TestMergeSortIterator
  */
-public class TestMergeSort {
+public class TestMergeSortIterator {
 
     @Test
-    public void testSort() {
+    public void testIterator() {
         int[] arr1 = {-3, 1, 2, 7, 9, 15, 19};
         int[] arr2 = {-6, 0, 3, 5, 10, 15, 19, 24};
         List<Iterator<Integer>> li = new ArrayList();
@@ -21,9 +21,13 @@ public class TestMergeSort {
         li.add(getList(arr1).iterator());
         li.add(getList(arr2).iterator());
 
-        List<Integer> res = MergeSort.sort(li);
-        List<Integer> expRes = getList(new int[] {-6, -3, 0, 1, 2, 3, 5, 7, 9, 10, 15, 15, 19, 19, 24});
+        Iterator<Integer> msIter = new MergeSortIterator(li);
+        List<Integer> res = new ArrayList<Integer>();
+        while (msIter.hasNext()) {
+            res.add(msIter.next());
+        }
 
+        List<Integer> expRes = getList(new int[] {-6, -3, 0, 1, 2, 3, 5, 7, 9, 10, 15, 15, 19, 19, 24});
         Assert.assertEquals(expRes, res);
     }
 

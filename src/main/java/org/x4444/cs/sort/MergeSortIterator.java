@@ -4,19 +4,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
 /**
- * MergeSort
+ * MergeSortIterator
  */
-public class MergeSort {
+public class MergeSortIterator implements Iterator<Integer> {
 
-    public static List<Integer> sort(List<Iterator<Integer>> iters) {
+    TreeMap<KI, Iterator<Integer>> tree = new TreeMap<KI, Iterator<Integer>>();
 
-        TreeMap<KI, Iterator<Integer>> tree = new TreeMap<KI, Iterator<Integer>>();
+    List<Integer> list = new ArrayList<Integer>();
 
-        List<Integer> list = new ArrayList<Integer>();
+    List<Iterator<Integer>> iters;
 
+    public MergeSortIterator(List<Iterator<Integer>> iters) {
+        this.iters = iters;
         // init tree
         for (int i = 0; i < iters.size(); i++) {
             Iterator<Integer> iter = iters.get(i);
@@ -24,20 +27,26 @@ public class MergeSort {
                 tree.put(new KI(iter.next(), i), iter);
             }
         }
+    }
 
-        while (!tree.isEmpty()) {
-            KI ki = tree.firstKey();
-            Integer v = ki.v;
-            int id = ki.id;
-            Iterator<Integer> kIter = tree.remove(ki);
-            if (kIter.hasNext()) {
-                ki.v = kIter.next();
-                tree.put(ki, kIter);
-            }
-            list.add(v);
+    @Override
+    public boolean hasNext() {
+        return !tree.isEmpty();
+    }
+
+    @Override
+    public Integer next() {
+        if (!hasNext()) {
+            throw new NoSuchElementException();
         }
-
-        return list;
+        KI ki = tree.firstKey();
+        Integer v = ki.v;
+        Iterator<Integer> kIter = tree.remove(ki);
+        if (kIter.hasNext()) {
+            ki.v = kIter.next();
+            tree.put(ki, kIter);
+        }
+        return v;
     }
 
     static class KI implements Serializable, Comparable<KI> {
