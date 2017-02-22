@@ -20,8 +20,6 @@ import java.util.Set;
  */
 public class Zones {
 
-    Set<Point> doneZeros = new HashSet<>();
-
     int[][] arr;
 
     int h;
@@ -37,6 +35,7 @@ public class Zones {
     }
 
     public List<Set<Point>> find() {
+        Set<Point> doneZeros = new HashSet<>();
         List<Set<Point>> res = new ArrayList<Set<Point>>();
         for (int r = 0; r < h; r++) {
             for (int c = 0; c < w; c++) {
