@@ -22,6 +22,26 @@ public class TestLCS {
         assertEquals(1, new LCS("b", "abc").getLen());
         assertEquals(1, new LCS("c", "abc").getLen());
 
-        assertEquals(7, new LCS("nematode knowledge", "empty bottle").getLen());
+        LCS lcs = new LCS("nematode knowledge", "empty bottles");
+        assertEquals(7, lcs.getLen());
+        lcs.printL();
+    }
+
+    @Test
+    public void testGetLen2() {
+        assertEquals(0, new LCS("", "").getLen2());
+        assertEquals(0, new LCS("a", "").getLen2());
+        assertEquals(0, new LCS("", "b").getLen2());
+
+        assertEquals(1, new LCS("abc", "a").getLen2());
+        assertEquals(1, new LCS("abc", "b").getLen2());
+        assertEquals(1, new LCS("abc", "c").getLen2());
+        assertEquals(1, new LCS("a", "abc").getLen2());
+        assertEquals(1, new LCS("b", "abc").getLen2());
+        assertEquals(1, new LCS("c", "abc").getLen2());
+
+        LCS lcs = new LCS("nematode knowledge", "empty bottles");
+        assertEquals(7, lcs.getLen2());
+        lcs.printL();
     }
 }
