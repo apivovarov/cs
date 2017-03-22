@@ -52,6 +52,19 @@ public class LCS {
         return L[0][0];
     }
 
+    public String getLcs() {
+        int a[] = L[0];
+        int prev = 0;
+        StringBuilder lcs = new StringBuilder();
+        for (int i = a.length - 1; i >= 0; i--) {
+            if (a[i] != prev) {
+                lcs.insert(0, s2.charAt(i));
+                prev = a[i];
+            }
+        }
+        return lcs.toString();
+    }
+
     public void printL() {
         System.out.print("\t");
         for (int j = 0; j < s2.length(); j++) {

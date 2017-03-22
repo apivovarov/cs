@@ -25,6 +25,7 @@ public class TestLCS {
         LCS lcs = new LCS("nematode knowledge", "empty bottles");
         assertEquals(7, lcs.getLen());
         lcs.printL();
+        assertEquals("emt tle", lcs.getLcs());
     }
 
     @Test
@@ -43,5 +44,6 @@ public class TestLCS {
         LCS lcs = new LCS("nematode knowledge", "empty bottles");
         assertEquals(7, lcs.getLen2());
         lcs.printL();
+        assertEquals("emt tle", lcs.getLcs());
     }
 }
