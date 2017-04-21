@@ -1,8 +1,6 @@
 package org.x4444.cs.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ArrayUtils {
   /**
@@ -47,5 +45,76 @@ public class ArrayUtils {
       resArr[i] = res.get(i).intValue();
     }
     return resArr;
+  }
+
+  public static int mostPopular(int[] a) {
+    if (a == null || a.length == 0) {
+      throw new RuntimeException("Empty array");
+    }
+    Map<Integer, Integer> m = new HashMap();
+    for (int v : a) {
+      Integer vv = Integer.valueOf(v);
+      Integer cnt = m.get(vv);
+      if (cnt == null) {
+        cnt = 0;
+      }
+      cnt++;
+      m.put(vv, cnt);
+    }
+    int cnt = 0;
+    int mostPopular = 0;
+    for(Map.Entry<Integer, Integer> entry : m.entrySet()) {
+      if (entry.getValue() > cnt) {
+        cnt = entry.getValue();
+        mostPopular = entry.getKey();
+      }
+    }
+    return mostPopular;
+  }
+
+  public static void rearrange(int[] a) {
+    if (a == null || a.length <= 1) {
+      return;
+    }
+
+    int b = 0;
+    int e = a.length - 1;
+
+    while (b < e) {
+      int i = findLeftZero(a, b);
+      int j = findRightNz(a, e);
+
+      if (i == -1 || j == -1 || j < i) {
+        return;
+      }
+
+      swap(a, i, j);
+      b = i + 1;
+      e = j - 1;
+    }
+  }
+
+  static void swap(int[] a, int i, int j) {
+    int buff = a[j];
+    a[j] = a[i];
+    a[i] = buff;
+  }
+
+  static int findLeftZero(int[] a, int b) {
+    for(int i = b; i < a.length; i++) {
+      if (a[i] == 0) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  static int findRightNz(int[] a, int e) {
+    for(int i = e; i >= 0; i--) {
+      if (a[i] != 0) {
+        return i;
+      }
+    }
+    return -1;
   }
 }
