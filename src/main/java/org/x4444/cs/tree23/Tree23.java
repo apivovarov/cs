@@ -6,27 +6,32 @@ import java.util.List;
 public class Tree23 {
     Node23 root = new Node23("0");
 
-    public int add(int v) {
-        Node23 n = root.find(v, 1);
-        return n.addV(v);
+    public int[] add(int v) {
+        FindRes r = root.find(v, 1, 0);
+        return r.node.addV(v, 1, r.lCnt);
     }
 
     public Node23 find(int v) {
-        Node23 n = root.find(v);
-        return n;
+        FindRes n = root.find(v);
+        return n.node;
     }
 
     public boolean contains(int v) {
-        Node23 n = root.find(v);
-        return n.contains(v);
+        FindRes n = root.find(v);
+        return n.node.contains(v);
     }
 
-    public Integer getCnt(int v) {
-        Node23 n = root.find(v);
-        return n.getCnt(v);
+    public int[] getCnt(int v) {
+        FindRes r = root.find(v);
+        return r.node.getCnt(v, r.lCnt);
+    }
+
+    public int size() {
+        return root.nCnt;
     }
 
     public void print() {
+        System.out.println("--------------------------------------------------------------------");
         List<Node23> plan = new LinkedList<>();
         plan.add(root);
         while (!plan.isEmpty()) {
