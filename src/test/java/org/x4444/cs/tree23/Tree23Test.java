@@ -51,7 +51,7 @@ public class Tree23Test {
     }
 
     @Test
-    public void testCnt() {
+    public void testGet() {
         Tree23 t = new Tree23();
 
         // 1st pass
@@ -62,7 +62,7 @@ public class Tree23Test {
         t.print();
         for (int i = 0; i < vv.length; i++) {
             int v = vv[i];
-            int[] cArr = t.getCnt(v);
+            int[] cArr = t.get(v);
             int lCnt = cArr[0];
             int vCnt = cArr[1];
             Assert.assertEquals(1, vCnt);
@@ -76,11 +76,13 @@ public class Tree23Test {
         Assert.assertEquals(vv.length * 2, t.size());
         for (int i = 0; i < vv.length; i++) {
             int v = vv[i];
-            int[] cArr = t.getCnt(v);
+            int[] cArr = t.get(v);
             int lCnt = cArr[0];
             int vCnt = cArr[1];
             Assert.assertEquals(2, vCnt);
             Assert.assertEquals(ls2[i] * 2, lCnt);
         }
+
+        Assert.assertNull(t.get(999));
     }
 }

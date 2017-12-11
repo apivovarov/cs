@@ -165,10 +165,10 @@ public class Node23 {
     }
 
     public boolean contains(int v) {
-        return getCnt(v, 0) != null;
+        return get(v, 0) != null;
     }
 
-    public int[] getCnt(int v, int lCnt) {
+    public int[] get(int v, int lCnt) {
         for (int i = 0; i < elems.length; i++) {
             El23 el = elems[i];
             if (el != null && el.v == v) {

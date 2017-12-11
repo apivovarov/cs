@@ -21,9 +21,9 @@ public class Tree23 {
         return n.node.contains(v);
     }
 
-    public int[] getCnt(int v) {
+    public int[] get(int v) {
         FindRes r = root.find(v);
-        return r.node.getCnt(v, r.lCnt);
+        return r.node.get(v, r.lCnt);
     }
 
     public int size() {
