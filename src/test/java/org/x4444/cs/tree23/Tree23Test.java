@@ -9,14 +9,16 @@ public class Tree23Test {
         int[] vv = new int[] { 50, 60, 70, 40, 30, 20, 10, 80, 90, 100 };
         Tree23 t = new Tree23();
         for (int v : vv) {
-            t.add(v);
+            int vCnt = t.add(v);
+            Assert.assertEquals(1, vCnt);
         }
         t.print();
         for (int v : vv) {
             Assert.assertEquals(Integer.valueOf(1), t.getCnt(v));
         }
         for (int v : vv) {
-            t.add(v);
+            int vCnt = t.add(v);
+            Assert.assertEquals(2, vCnt);
         }
         for (int v : vv) {
             Assert.assertEquals(Integer.valueOf(2), t.getCnt(v));

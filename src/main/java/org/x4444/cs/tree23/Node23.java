@@ -14,20 +14,22 @@ public class Node23 {
         this.id = id;
     }
 
-    public Node23 addV(int v) {
+    public int addV(int v) {
         return addV(v, 1);
     }
 
-    Node23 addV(int v, int cnt) {
+    int addV(int v, int cnt) {
         if (elems[0] == null) {
             elems[0] = new El23(v, cnt);
-            return getRoot();
+            return cnt;
         }
 
         boolean found = false;
+        int vCnt = 0;
         for (int i = 0; i < 3; i++) {
             if (elems[i] != null && elems[i].v == v) {
                 elems[i].cnt += cnt;
+                vCnt = elems[i].cnt;
                 found = true;
                 break;
             }
@@ -48,12 +50,13 @@ public class Node23 {
                     break;
                 }
             }
+            vCnt = cnt;
         }
 
         if (elems[2] != null) {
-            return split();
+            split();
         }
-        return getRoot();
+        return vCnt;
     }
 
     public Node23 find(int v) {
@@ -78,7 +81,7 @@ public class Node23 {
         return children[0].find(v, cnt);
     }
 
-    Node23 split() {
+    void split() {
         Node23 lN = new Node23(id + "0");
         Node23 rN = new Node23(id + "1");
         id += "2";
@@ -121,17 +124,16 @@ public class Node23 {
         if (parent == null) {
             lN.parent = this;
             rN.parent = this;
-            return this;
         } else {
             lN.parent = parent;
             rN.parent = parent;
-            return parent.merge(this);
+            parent.merge(this);
         }
     }
 
-    Node23 merge(Node23 n) {
+    void merge(Node23 n) {
         replaceChild(n, n.children[0], n.children[1]);
-        return addV(n.elems[0].v, n.elems[0].cnt);
+        addV(n.elems[0].v, n.elems[0].cnt);
     }
 
     void replaceChild(Node23 n, Node23 l, Node23 r) {
@@ -147,13 +149,6 @@ public class Node23 {
                 children[id + 1] = children[id];
             }
         }
-    }
-
-    public Node23 getRoot() {
-        if (parent == null) {
-            return this;
-        }
-        return parent.getRoot();
     }
 
     public boolean contains(int v) {

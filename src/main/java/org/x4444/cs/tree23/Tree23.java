@@ -6,7 +6,7 @@ import java.util.List;
 public class Tree23 {
     Node23 root = new Node23("0");
 
-    public Node23 add(int v) {
+    public int add(int v) {
         Node23 n = root.find(v, 1);
         return n.addV(v);
     }
