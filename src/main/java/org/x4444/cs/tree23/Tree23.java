@@ -7,7 +7,7 @@ public class Tree23 {
     Node23 root = new Node23("0");
 
     public Node23 add(int v) {
-        Node23 n = root.find(v);
+        Node23 n = root.find(v, 1);
         return n.addV(v);
     }
 

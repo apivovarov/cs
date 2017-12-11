@@ -8,6 +8,7 @@ public class Node23 {
     public Node23[] children = new Node23[4];
     public Node23 parent;
     public boolean isLeaf = true;
+    public int nCnt;
 
     public Node23(String id) {
         this.id = id;
@@ -56,6 +57,11 @@ public class Node23 {
     }
 
     public Node23 find(int v) {
+        return find(v, 0);
+    }
+
+    public Node23 find(int v, int cnt) {
+        nCnt += cnt;
         if (isLeaf) {
             return this;
         }
@@ -66,10 +72,10 @@ public class Node23 {
             if (elems[i].v == v) {
                 return this;
             } else if (v > elems[i].v) {
-                return children[i + 1].find(v);
+                return children[i + 1].find(v, cnt);
             }
         }
-        return children[0].find(v);
+        return children[0].find(v, cnt);
     }
 
     Node23 split() {
@@ -79,6 +85,8 @@ public class Node23 {
 
         lN.elems[0] = elems[0];
         rN.elems[0] = elems[2];
+        lN.nCnt += lN.elems[0].cnt;
+        rN.nCnt += rN.elems[0].cnt;
 
         elems[0] = elems[1];
         elems[1] = null;
@@ -92,10 +100,16 @@ public class Node23 {
             lN.children[1] = children[1];
             rN.children[0] = children[2];
             rN.children[1] = children[3];
+
             lN.children[0].parent = lN;
             lN.children[1].parent = lN;
             rN.children[0].parent = rN;
             rN.children[1].parent = rN;
+
+            lN.nCnt += lN.children[0].nCnt;
+            lN.nCnt += lN.children[1].nCnt;
+            rN.nCnt += rN.children[0].nCnt;
+            rN.nCnt += rN.children[1].nCnt;
         }
 
         isLeaf = false;
@@ -168,7 +182,7 @@ public class Node23 {
             }
         }
         sb.append("]");
-        return "id:" + id + ";elems:" + Arrays.toString(elems) + ";isLeaf:" + isLeaf + ";children:" + sb.toString()+ ";parent:" + (parent == null ? null : parent.id);
+        return "id:" + id + ";elems:" + Arrays.toString(elems) + ";isLeaf:" + isLeaf + ";children:" + sb.toString()+ ";parent:" + (parent == null ? null : parent.id) + ";nCnt:" + nCnt;
     }
 
     static class El23 {

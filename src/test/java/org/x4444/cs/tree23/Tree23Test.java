@@ -28,5 +28,7 @@ public class Tree23Test {
         Assert.assertTrue(n60.children[0].elems[0].v == 50 && n60.children[1].elems[0].v == 70 && n60.children[2].elems[0].v == 90
             && n60.children[3] == null);
         Assert.assertTrue(!n60.isLeaf);
+        Assert.assertEquals(12, n60.nCnt);
+        Assert.assertEquals(vv.length * 2, t.root.nCnt);
     }
 }
