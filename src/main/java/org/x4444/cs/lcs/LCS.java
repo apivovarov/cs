@@ -1,8 +1,5 @@
 package org.x4444.cs.lcs;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * LCS
  */
