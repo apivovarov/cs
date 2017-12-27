@@ -28,11 +28,25 @@ public class Heap {
         }
         size++;
         arr[size] = v;
-        bubbleUp(size);
+        //bubbleUp(size);
+    }
+
+    public void build() {
+        if (size < 2) {
+            return;
+        }
+        int half = size / 2;
+        for (int i = half; i > 0; i--) {
+            int cId = bubbleDown(i);
+            bubbleUp(cId, i);
+        }
     }
 
     void bubbleUp(int cId) {
-        if (cId < 2) {
+        bubbleUp(cId, 1);
+    }
+    void bubbleUp(int cId, int maxPId) {
+        if (cId <= maxPId) {
             return;
         }
         int pId = cId / 2;
@@ -43,7 +57,7 @@ public class Heap {
         }
         arr[pId] = c;
         arr[cId] = p;
-        bubbleUp(pId);
+        bubbleUp(pId, maxPId);
     }
 
     int bubbleDown(int pId) {
