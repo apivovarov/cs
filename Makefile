@@ -4,9 +4,9 @@ cdir = src/main/c
 all: fib heap
 
 
-fib : ${cdir}/fib.c
+fib : ${cdir}/fib.c ${cdir}/fibMain.c
 	mkdir -p bin
-	cc -o bin/fib ${cdir}/fib.c
+	cc -o bin/fib ${cdir}/fib.c ${cdir}/fibMain.c
 
 heap : ${cdir}/heap.c
 	mkdir -p bin

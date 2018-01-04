@@ -1,32 +1,24 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
+#include "fib.h"
 
-int main(int argc, char* argv[]) {
-  if (argc != 2) {
-    printf("Usage: fib <output_collection_size>\n");
-    exit(-1);
+const int FIB_MX = sizeof(unsigned long) == 8 ? 94 : 47;
+
+int *fib(int n, int arr[]) {
+  if (n < 3 || n > FIB_MX) {
+    printf("Output collection size range is [3..%d]\n", FIB_MX);
+    return NULL;
   }
-
-  int mx = sizeof(unsigned long) == 8 ? 94 : 47;
-
-  unsigned int n, i;
-  unsigned long a, b, c;
-
-  sscanf(argv[1], "%u", &n);
-
-  if (n < 3 || n > mx) {
-    printf("Output collection size range is [3..%d]\n", mx);
-    exit(-1);
-  }
-
-  a = 0;
-  b = 1;
-  printf("%lu\n%lu\n", a, b);
-  for (i = 2; i < n; i++) {
-    c = a + b;
+  unsigned int a = 0;
+  unsigned int b = 1;
+  arr[0] = a;
+  arr[1] = b;
+  for (int i = 2; i < n; i++) {
+    unsigned int c = a + b;
+#ifdef DEBUG
+    printf("c addr %p \n", &c);
+#endif
     a = b;
     b = c;
-    printf("%lu\n", c);
+    arr[i] = c;
   }
+  return arr;
 }
