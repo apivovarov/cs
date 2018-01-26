@@ -11,6 +11,10 @@ echo : ${cdir}/echo.c
 	mkdir -p bin
 	cc -o bin/echo ${cdir}/echo.c
 
+count : ${cdir}/count.c
+	mkdir -p bin
+	cc -o bin/count ${cdir}/count.c
+
 fib : ${cdir}/fib.c ${cdir}/fibMain.c
 	mkdir -p bin
 	cc -o bin/fib ${cdir}/fib.c ${cdir}/fibMain.c
