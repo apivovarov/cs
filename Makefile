@@ -7,6 +7,10 @@ ex001 : ${cdir}/ex001.c
 	mkdir -p bin
 	cc -o bin/ex001 ${cdir}/ex001.c
 
+echo : ${cdir}/echo.c
+	mkdir -p bin
+	cc -o bin/echo ${cdir}/echo.c
+
 fib : ${cdir}/fib.c ${cdir}/fibMain.c
 	mkdir -p bin
 	cc -o bin/fib ${cdir}/fib.c ${cdir}/fibMain.c

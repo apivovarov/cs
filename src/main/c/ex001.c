@@ -10,22 +10,20 @@ void fahrCelsTable() {
 
     fahr = lower;
     printf("| F |    C  |\n");
-    while(fahr <= upper) {
+    for(fahr = upper; fahr >= lower; fahr -= step) {
         celsius = (5.0 / 9.0) * (fahr - 32.0);
         printf("|%3.0f| %6.1f|\n", fahr, celsius);
-        fahr += step;
     }
 
     lower = -30;
     upper = 150;
     step = 10;
-    celsius = lower;
+
     printf("\n");
     printf("| C |    F  |\n");
-    while(celsius <= upper) {
+    for(celsius = upper; celsius >= lower; celsius -= step) {
         fahr = celsius / 5.0 * 9.0 + 32.0;
         printf("|%3.0f| %6.1f|\n", celsius, fahr);
-        celsius += step;
     }
 }
 
