@@ -3,6 +3,9 @@ cdir = src/main/c
 .PHONY: all
 all: fib heap
 
+ex001 : ${cdir}/ex001.c
+	mkdir -p bin
+	cc -o bin/ex001 ${cdir}/ex001.c
 
 fib : ${cdir}/fib.c ${cdir}/fibMain.c
 	mkdir -p bin
