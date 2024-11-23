@@ -9,6 +9,9 @@ A collection of data structures and algorithms.
 To build C++ project
 ```bash
 bazel build //x4444/...
+
+# To build for  Debug and print build commands
+bazel build -c dbg -s //x4444/...
 ```
 
 ### C project

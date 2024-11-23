@@ -1,6 +1,8 @@
 #include <iostream>
 
 int main() {
-  std::cout << "Hello" << std::endl;
+  int i = 0;
+  i = i + 6;
+  std::cout << "Hello" << i << std::endl;
   return 0;
 }
