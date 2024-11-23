@@ -65,18 +65,17 @@ class MinHeap {
       throw std::out_of_range("ERROR: heap is empty");
     }
     if (vec.size() == 1) {
-      vec.resize(0);
+      vec.pop_back();
       return;
     }
     if (vec.size() == 2) {
       vec[0] = vec[1];
-      vec.resize(1);
+      vec.pop_back();
       return;
     }
     size_t last_id = vec.size() - 1;
     vec[0] = vec[last_id];
-    vec.resize(last_id);
-
+    vec.pop_back();
     heapify(0);
   }
 
