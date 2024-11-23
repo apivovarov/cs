@@ -31,24 +31,7 @@ class MinHeap {
     }
   }
 
- public:
-  bool empty() {
-    return vec.empty();
-  }
-
-  size_t size() {
-    return vec.size();
-  }
-
-  T top() {
-    if (vec.empty()) {
-      throw std::out_of_range("ERROR: heap is empty");
-    }
-    return vec[0];
-  }
-
-  void push(T v) {
-    vec.push_back(v);
+  void _push() {
     size_t id = vec.size() - 1;
     // compare with parent and swap is needed
     if (id == 0) return;
@@ -58,6 +41,28 @@ class MinHeap {
       id = pid;
       pid = parent_id(pid);
     }
+  }
+
+ public:
+  bool empty() { return vec.empty(); }
+
+  size_t size() { return vec.size(); }
+
+  T top() {
+    if (vec.empty()) {
+      throw std::out_of_range("ERROR: heap is empty");
+    }
+    return vec[0];
+  }
+
+  void push(const T& v) {
+    vec.push_back(v);
+    _push();
+  }
+
+  void push(T&& v) {
+    vec.push_back(std::forward<T>(v));
+    _push();
   }
 
   void pop() {
