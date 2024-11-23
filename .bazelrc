@@ -1,5 +1,6 @@
 build --spawn_strategy=standalone
 build -c opt
+build --cxxopt=-std=c++20
 
 # Make Bazel print out all options from rc files.
 build --announce_rc
