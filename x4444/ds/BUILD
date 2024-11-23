@@ -13,3 +13,14 @@ cc_binary(
     name = "hello",
     srcs = ["hello.cc"],
 )
+
+cc_library(
+    name = "stack_lib",
+    hdrs = ["stack.h"],
+)
+
+cc_binary(
+    name = "stack",
+    srcs = ["stack.cc"],
+    deps = ["stack_lib"],
+)
