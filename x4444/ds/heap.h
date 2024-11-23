@@ -40,14 +40,14 @@ class MinHeap {
     return vec.size();
   }
 
-  T root() {
+  T top() {
     if (vec.empty()) {
       throw std::out_of_range("ERROR: heap is empty");
     }
     return vec[0];
   }
 
-  void add(T v) {
+  void push(T v) {
     vec.push_back(v);
     size_t id = vec.size() - 1;
     // compare with parent and swap is needed

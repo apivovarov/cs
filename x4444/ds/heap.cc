@@ -5,10 +5,10 @@ int main() {
   x4444::ds::MinHeap<float> h;
   float sample1[] = {148, 151, 12, 5, 8, 150, 14, 6, 7, 20, 30, 160, 152, 4, 132};
   for (float i : sample1) {
-    h.add(i);
+    h.push(i);
   }
 
-  std::cerr << "root: " << h.root() << ", size: " << h.size() << std::endl;
+  std::cerr << "top: " << h.top() << ", size: " << h.size() << std::endl;
   h.dump(std::cerr);
 
   while (h.size() > 0) {
@@ -17,7 +17,7 @@ int main() {
     if (h.empty()) {
       break;
     }
-    std::cerr << "root: " << h.root() << ", size: " << h.size()
+    std::cerr << "top: " << h.top() << ", size: " << h.size()
               << std::endl;
     h.dump(std::cerr);
   }
