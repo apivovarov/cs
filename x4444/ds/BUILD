@@ -1,6 +1,7 @@
 cc_library(
     name = "heap_lib",
     hdrs = ["heap.h"],
+    visibility = ["//visibility:public"],
 )
 
 cc_binary(
@@ -17,6 +18,7 @@ cc_binary(
 cc_library(
     name = "stack_lib",
     hdrs = ["stack.h"],
+    visibility = ["//visibility:public"],
 )
 
 cc_binary(
