@@ -11,6 +11,11 @@ cc_binary(
 )
 
 cc_binary(
+    name = "hashmap_example",
+    srcs = ["hashmap_example.cc"],
+)
+
+cc_binary(
     name = "hello",
     srcs = ["hello.cc"],
 )
