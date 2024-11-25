@@ -26,3 +26,8 @@ cc_binary(
     srcs = ["stack.cc"],
     deps = ["stack_lib"],
 )
+
+cc_binary(
+    name = "binary_search_tree",
+    srcs = ["binary_search_tree.cc"],
+)
