@@ -18,9 +18,9 @@ class BST {
   int sz = 0;
   Node* root = nullptr;
 
-  Node* max_node() const {
-    if (root == nullptr) throw std::out_of_range("Tree is empty");
-    Node* curr_node = root;
+  Node* max_node(Node* root_) const {
+    if (root_ == nullptr) throw std::out_of_range("Tree is empty");
+    Node* curr_node = root_;
     while (true) {
       if (curr_node->right == nullptr) {
         return curr_node;
@@ -29,9 +29,9 @@ class BST {
     }
   }
 
-  Node* min_node() const {
-    if (root == nullptr) throw std::out_of_range("Tree is empty");
-    Node* curr_node = root;
+  Node* min_node(Node* root_) const {
+    if (root_ == nullptr) throw std::out_of_range("Tree is empty");
+    Node* curr_node = root_;
     while (true) {
       if (curr_node->left == nullptr) {
         return curr_node;
@@ -101,9 +101,9 @@ class BST {
  public:
   int size() const { return sz; }
 
-  int max() const { return max_node()->value; }
+  int max() const { return max_node(root)->value; }
 
-  int min() const { return min_node()->value; }
+  int min() const { return min_node(root)->value; }
 
   bool contains(int v) const { return find_node(v) != nullptr; }
 
@@ -138,7 +138,86 @@ class BST {
     }
   }
 
+  bool erase(int v) {
+    Node* n = find_node(v);
+    if (n == nullptr) {
+      return false;
+    }
+    // just one root node
+    if (sz == 1) {
+      root = nullptr;
+      sz = 0;
+      delete n;
+      return true;
+    }
+    // leaf node
+    if (n->left == nullptr && n->right == nullptr) {
+      if (n == n->parent->left) {
+        n->parent->left = nullptr;
+      } else {
+        n->parent->right = nullptr;
+      }
+      --sz;
+      delete n;
+      return true;
+    }
+
+    // one child (only right)
+    if (n->left == nullptr) {
+      if (n->parent == nullptr) {
+        root = n->right;
+      } else {
+        if (n == n->parent->left) {
+          n->parent->left = n->right;
+        } else {
+          n->parent->right = n->right;
+        }
+      }
+      n->right->parent = n->parent;
+      --sz;
+      delete n;
+      return true;
+    }
+
+    // one child (only left)
+    if (n->right == nullptr) {
+      if (n->parent == nullptr) {
+        root = n->left;
+      } else {
+        if (n == n->parent->left) {
+          n->parent->left = n->left;
+        } else {
+          n->parent->right = n->left;
+        }
+      }
+      n->left->parent = n->parent;
+      --sz;
+      delete n;
+      return true;
+    }
+
+    // merge left and right sub-trees
+    Node* max_left_node = max_node(n->left);
+    // detach max_left_node from its parent
+    if (max_left_node->parent->left == max_left_node) {
+      max_left_node->parent->left = max_left_node->left;
+    } else {
+      max_left_node->parent->right = max_left_node->left;
+    }
+    if (max_left_node->left != nullptr) {
+      max_left_node->left->parent = max_left_node->parent;
+    }
+    // copy value from max_left_node to n
+    n->value = std::move(max_left_node->value);
+    --sz;
+    delete max_left_node;
+    return true;
+  }
+
   void dump(std::ostream& os) const {
+    os << "size: " << sz << std::endl;
+    if (sz > 0) os << "root: " << root->value << std::endl;
+
     _walk_iter(root, os);
     os << std::endl;
   }
@@ -149,22 +228,10 @@ class BST {
 
 int main() {
   x4444::ds::BST t;
-  t.insert(4);
-  t.insert(1);
-  t.insert(7);
-  t.insert(9);
-  t.insert(4);
-  t.insert(5);
-  t.insert(2);
-  t.insert(9);
-  t.insert(10);
-  t.insert(3);
-  t.insert(14);
-  t.insert(21);
-  t.insert(17);
-  t.insert(16);
-  t.insert(2);
-  t.insert(14);
+  for (int i :
+       {11, 1, 7, 9, 19, 4, 5, 23, 2, 9, 10, 3, 14, 21, 17, 16, 2, 18}) {
+    t.insert(i);
+  }
 
   t.dump(std::cerr);
 
@@ -179,4 +246,12 @@ int main() {
   std::cout << "min: " << t.min() << std::endl;
 
   std::cout << "size: " << t.size() << std::endl;
+
+  for (int i :
+       {66, 21, 11, 19, 3, 14, 17, 1, 23, 10, 5, 16, 16, 7, 9, 18, 4, 2}) {
+    std::cerr << "==============================" << std::endl;
+    t.dump(std::cerr);
+    std::cerr << "erasing: " << i << ", res: " << t.erase(i) << std::endl;
+    t.dump(std::cerr);
+  }
 }
