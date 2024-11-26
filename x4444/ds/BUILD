@@ -43,3 +43,14 @@ cc_binary(
     srcs = ["binary_search_tree_main.cc"],
     deps = ["binary_search_tree_lib"],
 )
+
+cc_library(
+    name = "hashset_lib",
+    hdrs = ["hashset.h"],
+)
+
+cc_binary(
+    name = "hashset_main",
+    srcs = ["hashset_main.cc"],
+    deps = ["hashset_lib"],
+)
