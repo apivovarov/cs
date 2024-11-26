@@ -32,7 +32,14 @@ cc_binary(
     deps = ["stack_lib"],
 )
 
+cc_library(
+    name = "binary_search_tree_lib",
+    hdrs = ["binary_search_tree.h"],
+    visibility = ["//visibility:public"],
+)
+
 cc_binary(
-    name = "binary_search_tree",
-    srcs = ["binary_search_tree.cc"],
+    name = "binary_search_tree_main",
+    srcs = ["binary_search_tree_main.cc"],
+    deps = ["binary_search_tree_lib"],
 )

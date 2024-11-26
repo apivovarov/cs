@@ -1,26 +1,27 @@
-#include <iostream>
 #include <ostream>
 
 namespace x4444 {
 namespace ds {
 
+template <typename T>
 struct Node {
-  Node(int value_) : value(value_){};
-  Node(int value_, Node* parent_) : value(value_), parent(parent_){};
-  int value;
-  Node* parent = nullptr;
-  Node* left = nullptr;
-  Node* right = nullptr;
+  Node(const T& value_) : value(value_){};
+  Node(const T& value_, Node<T>* parent_) : value(value_), parent(parent_){};
+  T value;
+  Node<T>* parent = nullptr;
+  Node<T>* left = nullptr;
+  Node<T>* right = nullptr;
 };
 
+template <typename T>
 class BST {
  protected:
-  int sz = 0;
-  Node* root = nullptr;
+  size_t sz = 0;
+  Node<T>* root = nullptr;
 
-  Node* max_node(Node* root_) const {
+  Node<T>* max_node(Node<T>* root_) const {
     if (root_ == nullptr) throw std::out_of_range("Tree is empty");
-    Node* curr_node = root_;
+    Node<T>* curr_node = root_;
     while (true) {
       if (curr_node->right == nullptr) {
         return curr_node;
@@ -29,9 +30,9 @@ class BST {
     }
   }
 
-  Node* min_node(Node* root_) const {
+  Node<T>* min_node(Node<T>* root_) const {
     if (root_ == nullptr) throw std::out_of_range("Tree is empty");
-    Node* curr_node = root_;
+    Node<T>* curr_node = root_;
     while (true) {
       if (curr_node->left == nullptr) {
         return curr_node;
@@ -40,8 +41,8 @@ class BST {
     }
   }
 
-  Node* find_node(int v) const {
-    Node* curr_node = root;
+  Node<T>* find_node(const T& v) const {
+    Node<T>* curr_node = root;
     while (true) {
       if (curr_node == nullptr) {
         return nullptr;
@@ -57,8 +58,8 @@ class BST {
     }
   }
 
-  void _walk_iter(Node* n, std::ostream& os) const {
-    Node* prev_ch = nullptr;
+  void _walk_iter(Node<T>* n, std::ostream& os) const {
+    Node<T>* prev_ch = nullptr;
     while (true) {
       if (n == nullptr) {
         return;
@@ -89,7 +90,7 @@ class BST {
     }
   }
 
-  void _walk_recurs(Node* n, std::ostream& os) const {
+  void _walk_recurs(Node<T>* n, std::ostream& os) const {
     if (n == nullptr) {
       return;
     }
@@ -99,28 +100,28 @@ class BST {
   }
 
  public:
-  int size() const { return sz; }
+  size_t size() const { return sz; }
 
-  int max() const { return max_node(root)->value; }
+  T max() const { return max_node(root)->value; }
 
-  int min() const { return min_node(root)->value; }
+  T min() const { return min_node(root)->value; }
 
-  bool contains(int v) const { return find_node(v) != nullptr; }
+  bool contains(const T& v) const { return find_node(v) != nullptr; }
 
-  void insert(int v) {
+  void insert(const T& v) {
     if (root == nullptr) {
-      root = new Node(v);
+      root = new Node<T>(v);
       sz = 1;
       return;
     }
-    Node* curr_node = root;
+    Node<T>* curr_node = root;
     while (true) {
       if (curr_node->value == v) {
         return;
       }
       if (v < curr_node->value) {
         if (curr_node->left == nullptr) {
-          curr_node->left = new Node(v, curr_node);
+          curr_node->left = new Node<T>(v, curr_node);
           ++sz;
           break;
         } else {
@@ -128,7 +129,7 @@ class BST {
         }
       } else {
         if (curr_node->right == nullptr) {
-          curr_node->right = new Node(v, curr_node);
+          curr_node->right = new Node<T>(v, curr_node);
           ++sz;
           break;
         } else {
@@ -138,8 +139,8 @@ class BST {
     }
   }
 
-  bool erase(int v) {
-    Node* n = find_node(v);
+  bool erase(const T& v) {
+    Node<T>* n = find_node(v);
     if (n == nullptr) {
       return false;
     }
@@ -197,7 +198,7 @@ class BST {
     }
 
     // merge left and right sub-trees
-    Node* max_left_node = max_node(n->left);
+    Node<T>* max_left_node = max_node(n->left);
     // detach max_left_node from its parent
     if (max_left_node->parent->left == max_left_node) {
       max_left_node->parent->left = max_left_node->left;
@@ -225,33 +226,3 @@ class BST {
 
 }  // namespace ds
 }  // namespace x4444
-
-int main() {
-  x4444::ds::BST t;
-  for (int i :
-       {11, 1, 7, 9, 19, 4, 5, 23, 2, 9, 10, 3, 14, 21, 17, 16, 2, 18}) {
-    t.insert(i);
-  }
-
-  t.dump(std::cerr);
-
-  std::cout << "contains 55: " << std::boolalpha << t.contains(55) << std::endl;
-  std::cout << "contains -55: " << std::boolalpha << t.contains(-55)
-            << std::endl;
-  std::cout << "contains 6: " << std::boolalpha << t.contains(6) << std::endl;
-  std::cout << "contains 16: " << std::boolalpha << t.contains(16) << std::endl;
-  std::cout << "contains 7: " << std::boolalpha << t.contains(7) << std::endl;
-
-  std::cout << "max: " << t.max() << std::endl;
-  std::cout << "min: " << t.min() << std::endl;
-
-  std::cout << "size: " << t.size() << std::endl;
-
-  for (int i :
-       {66, 21, 11, 19, 3, 14, 17, 1, 23, 10, 5, 16, 16, 7, 9, 18, 4, 2}) {
-    std::cerr << "==============================" << std::endl;
-    t.dump(std::cerr);
-    std::cerr << "erasing: " << i << ", res: " << t.erase(i) << std::endl;
-    t.dump(std::cerr);
-  }
-}
