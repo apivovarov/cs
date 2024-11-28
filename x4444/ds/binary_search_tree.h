@@ -97,7 +97,16 @@ class BST {
     _walk_recurs(n->right, os);
   }
 
+  void _del_postorder(Node* n) {
+    if (!n) return;
+    _del_postorder(n->left);
+    _del_postorder(n->right);
+    delete n;
+  }
+
  public:
+  ~BST() { _del_postorder(root); }
+
   size_t size() const { return sz; }
 
   T max() const { return max_node(root)->value; }

@@ -31,4 +31,18 @@ int main() {
     std::cerr << "erasing: " << i << ", res: " << t.erase(i) << std::endl;
     t.dump(std::cerr);
   }
+
+  {
+    x4444::ds::BST<float> t2;
+    t2.insert(4.55);
+    t2.insert(5.55);
+    t2.insert(1.55);
+    t2.insert(6.55);
+    t2.insert(2.55);
+    t2.insert(9.55);
+    t2.insert(4.55);
+    t2.insert(6.55);
+    t2.insert(1.45);
+  }
+  std::cerr << "done" << std::endl;
 }
