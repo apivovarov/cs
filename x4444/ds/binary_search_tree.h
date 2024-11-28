@@ -4,24 +4,22 @@ namespace x4444 {
 namespace ds {
 
 template <typename T>
-struct Node {
-  Node(const T& value_) : value(value_){};
-  Node(const T& value_, Node<T>* parent_) : value(value_), parent(parent_){};
-  T value;
-  Node<T>* parent = nullptr;
-  Node<T>* left = nullptr;
-  Node<T>* right = nullptr;
-};
-
-template <typename T>
 class BST {
  protected:
+  struct Node {
+    Node(const T& value_) : value(value_){};
+    Node(const T& value_, Node* parent_) : value(value_), parent(parent_){};
+    T value;
+    Node* parent = nullptr;
+    Node* left = nullptr;
+    Node* right = nullptr;
+  };
   size_t sz = 0;
-  Node<T>* root = nullptr;
+  Node* root = nullptr;
 
-  Node<T>* max_node(Node<T>* root_) const {
+  Node* max_node(Node* root_) const {
     if (root_ == nullptr) throw std::out_of_range("Tree is empty");
-    Node<T>* curr_node = root_;
+    Node* curr_node = root_;
     while (true) {
       if (curr_node->right == nullptr) {
         return curr_node;
@@ -30,9 +28,9 @@ class BST {
     }
   }
 
-  Node<T>* min_node(Node<T>* root_) const {
+  Node* min_node(Node* root_) const {
     if (root_ == nullptr) throw std::out_of_range("Tree is empty");
-    Node<T>* curr_node = root_;
+    Node* curr_node = root_;
     while (true) {
       if (curr_node->left == nullptr) {
         return curr_node;
@@ -41,8 +39,8 @@ class BST {
     }
   }
 
-  Node<T>* find_node(const T& v) const {
-    Node<T>* curr_node = root;
+  Node* find_node(const T& v) const {
+    Node* curr_node = root;
     while (true) {
       if (curr_node == nullptr) {
         return nullptr;
@@ -58,8 +56,8 @@ class BST {
     }
   }
 
-  void _walk_iter(Node<T>* n, std::ostream& os) const {
-    Node<T>* prev_ch = nullptr;
+  void _walk_iter(Node* n, std::ostream& os) const {
+    Node* prev_ch = nullptr;
     while (true) {
       if (n == nullptr) {
         return;
@@ -90,7 +88,7 @@ class BST {
     }
   }
 
-  void _walk_recurs(Node<T>* n, std::ostream& os) const {
+  void _walk_recurs(Node* n, std::ostream& os) const {
     if (n == nullptr) {
       return;
     }
@@ -110,18 +108,18 @@ class BST {
 
   void insert(const T& v) {
     if (root == nullptr) {
-      root = new Node<T>(v);
+      root = new Node(v);
       sz = 1;
       return;
     }
-    Node<T>* curr_node = root;
+    Node* curr_node = root;
     while (true) {
       if (curr_node->value == v) {
         return;
       }
       if (v < curr_node->value) {
         if (curr_node->left == nullptr) {
-          curr_node->left = new Node<T>(v, curr_node);
+          curr_node->left = new Node(v, curr_node);
           ++sz;
           break;
         } else {
@@ -129,7 +127,7 @@ class BST {
         }
       } else {
         if (curr_node->right == nullptr) {
-          curr_node->right = new Node<T>(v, curr_node);
+          curr_node->right = new Node(v, curr_node);
           ++sz;
           break;
         } else {
@@ -140,7 +138,7 @@ class BST {
   }
 
   bool erase(const T& v) {
-    Node<T>* n = find_node(v);
+    Node* n = find_node(v);
     if (n == nullptr) {
       return false;
     }
@@ -198,7 +196,7 @@ class BST {
     }
 
     // merge left and right sub-trees
-    Node<T>* max_left_node = max_node(n->left);
+    Node* max_left_node = max_node(n->left);
     // detach max_left_node from its parent
     if (max_left_node->parent->left == max_left_node) {
       max_left_node->parent->left = max_left_node->left;
