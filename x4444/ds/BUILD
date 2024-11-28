@@ -54,3 +54,14 @@ cc_binary(
     srcs = ["hashset_main.cc"],
     deps = ["hashset_lib"],
 )
+
+cc_library(
+    name = "forward_list_lib",
+    hdrs = ["forward_list.h"],
+)
+
+cc_binary(
+    name = "forward_list_main",
+    srcs = ["forward_list_main.cc"],
+    deps = ["forward_list_lib"],
+)
