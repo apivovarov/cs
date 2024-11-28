@@ -1,7 +1,7 @@
 #include <ostream>
 #include <array>
 #include <functional>
-#include <forward_list>
+#include "x4444/ds/forward_list.h"
 
 namespace x4444 {
 namespace ds {
@@ -9,7 +9,7 @@ namespace ds {
 template <typename T, size_t _Size>
 class HashSet {
  protected:
-  std::array<std::forward_list<T>, _Size> arr;
+  std::array<ForwardList<T>, _Size> arr;
   std::hash<T> hh;
 
  public:

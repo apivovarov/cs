@@ -47,6 +47,7 @@ cc_binary(
 cc_library(
     name = "hashset_lib",
     hdrs = ["hashset.h"],
+    deps = ["forward_list_lib"],
 )
 
 cc_binary(
