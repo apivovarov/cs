@@ -1,5 +1,6 @@
 #include <ostream>
 #include <utility>
+#include <iterator>
 
 namespace x4444 {
 namespace ds {
@@ -7,7 +8,6 @@ namespace ds {
 template <typename T>
 class ForwardList {
  protected:
-  //template <typename K>
   struct Node {
     Node(const T& _value, Node* _next) : value(_value), next(_next) {}
     Node(T&& _value, Node* _next) : value(std::move(_value)), next(_next) {}
@@ -17,6 +17,92 @@ class ForwardList {
   Node* root = nullptr;
 
  public:
+  class Iterator {
+   protected:
+    Node* curr;
+
+   public:
+    using iterator_category = std::forward_iterator_tag;
+    using value_type = T;
+    using difference_type = std::ptrdiff_t;
+    using pointer = T*;
+    using reference = T&;
+
+    Iterator(Node* n) : curr(n) {}
+
+    reference operator*() const { return curr->value; }
+
+    pointer operator->() const { return std::addressof(curr->value); }
+
+    Iterator& operator++() {
+      if (curr) curr = curr->next;
+      return *this;
+    }
+
+    Iterator operator++(int) {
+      Iterator tmp(*this);
+      ++(*this);
+      return tmp;
+    }
+
+    bool operator==(const Iterator& other) const { return curr == other.curr; }
+
+    bool operator!=(const Iterator& other) const { return curr != other.curr; }
+  };
+
+  class ConstIterator {
+   protected:
+    Node* curr;
+
+   public:
+    using iterator_category = std::forward_iterator_tag;
+    using value_type = const T;
+    using difference_type = std::ptrdiff_t;
+    using pointer = const T*;
+    using reference = const T&;
+
+    ConstIterator(Node* n) : curr(n) {}
+
+    reference operator*() const { return curr->value; }
+
+    pointer operator->() const { return std::addressof(curr->value); }
+
+    ConstIterator& operator++() {
+      if (curr) curr = curr->next;
+      return *this;
+    }
+
+    ConstIterator operator++(int) {
+      ConstIterator tmp(*this);
+      ++(*this);
+      return tmp;
+    }
+
+    bool operator==(const ConstIterator& other) const {
+      return curr == other.curr;
+    }
+
+    bool operator!=(const ConstIterator& other) const {
+      return curr != other.curr;
+    }
+  };
+
+  ~ForwardList() {
+    while (root) {
+      Node* tmp = root;
+      root = root->next;
+      delete tmp;
+    }
+  }
+
+  Iterator begin() { return Iterator(root); }
+  ConstIterator begin() const { return ConstIterator(root); }
+  ConstIterator cbegin() { return ConstIterator(root); }
+
+  Iterator end() { return Iterator(nullptr); }
+  ConstIterator end() const { return ConstIterator(nullptr); }
+  ConstIterator cend() { return ConstIterator(nullptr); }
+
   T& front() {
     if (!root) throw std::out_of_range("Forward List is empty");
     return root->value;
@@ -27,14 +113,9 @@ class ForwardList {
     return root->value;
   }
 
-  void push_front(const T& v) {
-    root = new ForwardList::Node(v, root);
-    ;
-  }
+  void push_front(const T& v) { root = new ForwardList::Node(v, root); }
 
-  void push_front(T&& v) {
-    root = new ForwardList::Node(std::move(v), root);
-  }
+  void push_front(T&& v) { root = new ForwardList::Node(std::move(v), root); }
 
   void pop_front() {
     if (!root) throw std::out_of_range("Forward List is empty");
