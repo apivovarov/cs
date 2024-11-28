@@ -44,5 +44,24 @@ int main() {
     t2.insert(6.55);
     t2.insert(1.45);
   }
+  {
+    x4444::ds::BST<float> t;
+    for (float i : {11., 1.1, 7., 9.1, 19., 4., 5., 23., 2., 9.1, 10., 3.1, 14.,
+                    21., 17., 16., 2., 18.}) {
+      t.insert(i);
+    }
+
+    auto it = t.begin();
+    while (it != t.end()) {
+      std::cerr << "*it: " << *it << std::endl;
+      ++it;
+    }
+    std::cerr << std::endl;
+
+    for (const auto& v : t) {
+      std::cerr << v << ", ";
+    }
+    std::cerr << std::endl;
+  }
   std::cerr << "done" << std::endl;
 }

@@ -17,8 +17,8 @@ class BST {
   size_t sz = 0;
   Node* root = nullptr;
 
-  Node* max_node(Node* root_) const {
-    if (root_ == nullptr) throw std::out_of_range("Tree is empty");
+  static Node* max_node(Node* root_) {
+    if (root_ == nullptr) throw std::out_of_range("MM: Tree is empty");
     Node* curr_node = root_;
     while (true) {
       if (curr_node->right == nullptr) {
@@ -28,8 +28,8 @@ class BST {
     }
   }
 
-  Node* min_node(Node* root_) const {
-    if (root_ == nullptr) throw std::out_of_range("Tree is empty");
+  static Node* min_node(Node* root_) {
+    if (root_ == nullptr) throw std::out_of_range("MI: Tree is empty");
     Node* curr_node = root_;
     while (true) {
       if (curr_node->left == nullptr) {
@@ -106,6 +106,51 @@ class BST {
 
  public:
   ~BST() { _del_postorder(root); }
+
+  class Iterator {
+   public:
+    Node* curr = nullptr;
+
+   public:
+    using iterator_category = std::forward_iterator_tag;
+    using value_type = T;
+    using difference_type = std::ptrdiff_t;
+    using pointer = T*;
+    using reference = T&;
+
+    Iterator(Node* n) { curr = n ? min_node(n) : nullptr; }
+
+    reference operator*() const { return curr->value; }
+
+    pointer operator->() const { return std::addressof(curr->value); }
+
+    Iterator& operator++() {
+      if (curr->right) {
+        curr = min_node(curr->right);
+        return *this;
+      }
+
+      auto* parent = curr->parent;
+      while (parent) {
+        if (curr == parent->left) {
+          curr = parent;
+          return *this;
+        }
+        curr = parent;
+        parent = parent->parent;
+      }
+      curr = nullptr;
+      return *this;
+    }
+
+    bool operator==(const Iterator& other) const { return curr == other.curr; }
+
+    bool operator!=(const Iterator& other) const { return curr != other.curr; }
+  };
+
+  Iterator begin() { return Iterator(root); }
+
+  Iterator end() { return Iterator(nullptr); }
 
   size_t size() const { return sz; }
 
