@@ -10,6 +10,18 @@ int main() {
 
   std::cerr << "top: " << h.top() << ", size: " << h.size() << std::endl;
   h.dump(std::cerr);
+  std::cerr << "iter loop" << std::endl;
+  for (auto it = h.begin(); it != h.end(); ++it) {
+    std::cerr << *it << ", ";
+  }
+  std::cerr << std::endl;
+  std::cerr << "iter loop done" << std::endl;
+  std::cerr << "for loop" << std::endl;
+  for (auto&& v : h) {
+    std::cerr << v << ", ";
+  }
+  std::cerr << std::endl;
+  std::cerr << "for loop done" << std::endl;
 
   while (h.size() > 0) {
     std::cerr << "=======================" << std::endl;

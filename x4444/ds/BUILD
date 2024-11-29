@@ -5,8 +5,8 @@ cc_library(
 )
 
 cc_binary(
-    name = "heap",
-    srcs = ["heap.cc"],
+    name = "heap_main",
+    srcs = ["heap_main.cc"],
     deps = ["heap_lib"],
 )
 

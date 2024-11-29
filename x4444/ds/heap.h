@@ -44,6 +44,12 @@ class MinHeap {
   }
 
  public:
+  using iterator = typename std::vector<T>::iterator;
+
+  iterator begin() { return vec.begin(); }
+
+  iterator end() { return vec.end(); }
+
   bool empty() { return vec.empty(); }
 
   size_t size() { return vec.size(); }
