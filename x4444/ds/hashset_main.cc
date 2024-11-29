@@ -8,7 +8,19 @@ int main() {
   hs.insert(15);
   hs.insert(1039);
   hs.insert(492049093);
-  hs.dump(std::cerr);
+
+  std::cerr << "iter loop" << std::endl;
+  for (auto it = hs.begin(); it != hs.end(); ++it) {
+    std::cerr << *it << ", ";
+  }
+  std::cerr <<  std::endl;
+  std::cerr << "iter loop done" << std::endl;
+  std::cerr << "for loop" << std::endl;
+  for(auto&& v : hs) {
+    std::cerr << v << ", ";
+  }
+  std::cerr <<  std::endl;
+  std::cerr << "for loop done" << std::endl;
 
   std::cerr << "contains(44): " << std::boolalpha << hs.contains(44)
             << std::endl;
