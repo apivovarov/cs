@@ -9,6 +9,7 @@ int main() {
   hs.insert(1039);
   hs.insert(492049093);
 
+  std::cerr << "size: " << hs.size() << std::endl;
   std::cerr << "iter loop" << std::endl;
   for (auto it = hs.begin(); it != hs.end(); ++it) {
     std::cerr << *it << ", ";
@@ -35,4 +36,6 @@ int main() {
   hs.remove(15);
   std::cerr << "contains(15): " << std::boolalpha << hs.contains(15)
             << std::endl;
+
+  std::cerr << "size: " << hs.size() << std::endl;
 }

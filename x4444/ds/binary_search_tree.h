@@ -195,6 +195,8 @@ class BST {
 
   size_t size() const { return sz; }
 
+  bool empty() const { return sz == 0; }
+
   T max() const { return max_node(root)->value; }
 
   T min() const { return min_node(root)->value; }

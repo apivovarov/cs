@@ -52,7 +52,9 @@ class MinHeap {
 
   bool empty() { return vec.empty(); }
 
-  size_t size() { return vec.size(); }
+  size_t size() const { return vec.size(); }
+
+  bool empty() const { return vec.empty(); }
 
   T top() {
     if (vec.empty()) {

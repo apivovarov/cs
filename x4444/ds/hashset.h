@@ -10,6 +10,7 @@ template <typename T, size_t _Size>
 class HashSet {
  protected:
   std::array<ForwardList<T>, _Size> arr;
+  size_t sz = 0;
   std::hash<T> hh;
 
  public:
@@ -88,10 +89,15 @@ class HashSet {
     return Iterator(_ite0, _ite0, _ite1, _ite1);
   }
 
+  size_t size() const { return sz; }
+
+  bool empty() const { return sz == 0; }
+
   void insert(T v) {
     auto&& li = arr[hh(v) % arr.size()];
-    li.remove(v);
+    size_t rem_cnt = li.remove(v);
     li.push_front(v);
+    sz = sz - rem_cnt + 1;
   }
 
   bool contains(T v) {
@@ -106,7 +112,8 @@ class HashSet {
 
   void remove(T v) {
     auto&& li = arr[hh(v) % arr.size()];
-    li.remove(v);
+    size_t rem_cnt = li.remove(v);
+    sz -= rem_cnt;
   }
 };
 

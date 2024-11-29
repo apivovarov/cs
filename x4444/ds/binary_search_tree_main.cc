@@ -32,6 +32,8 @@ int main() {
     t.dump(std::cerr);
   }
 
+  std::cout << "size after erase: " << t.size() << std::endl;
+
   {
     x4444::ds::BST<float> t2;
     t2.insert(4.55);
