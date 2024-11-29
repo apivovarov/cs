@@ -27,8 +27,8 @@ cc_library(
 )
 
 cc_binary(
-    name = "stack",
-    srcs = ["stack.cc"],
+    name = "stack_main",
+    srcs = ["stack_main.cc"],
     deps = ["stack_lib"],
 )
 
