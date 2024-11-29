@@ -109,16 +109,17 @@ class BST {
 
   class Iterator {
    public:
+    Node* prev = nullptr;
     Node* curr = nullptr;
 
    public:
-    using iterator_category = std::forward_iterator_tag;
+    using iterator_category = std::bidirectional_iterator_tag;
     using value_type = T;
     using difference_type = std::ptrdiff_t;
     using pointer = T*;
     using reference = T&;
 
-    Iterator(Node* n) { curr = n ? min_node(n) : nullptr; }
+    Iterator(Node* _prev, Node* _curr) : prev(_prev), curr(_curr){};
 
     reference operator*() const { return curr->value; }
 
@@ -129,7 +130,7 @@ class BST {
         curr = min_node(curr->right);
         return *this;
       }
-
+      auto* maybe_max = curr;
       auto* parent = curr->parent;
       while (parent) {
         if (curr == parent->left) {
@@ -139,8 +140,45 @@ class BST {
         curr = parent;
         parent = parent->parent;
       }
+      prev = maybe_max;
       curr = nullptr;
       return *this;
+    }
+
+    Iterator operator++(int) {
+      Iterator tmp = *this;
+      ++(*this);
+      return tmp;
+    }
+
+    Iterator& operator--() {
+      if (!curr) {
+        curr = prev;
+        return *this;
+      }
+      if (curr->left) {
+        curr = max_node(curr->left);
+        return *this;
+      }
+      auto* maybe_min = curr;
+      auto* parent = curr->parent;
+      while (parent) {
+        if (curr == parent->right) {
+          curr = parent;
+          return *this;
+        }
+        curr = parent;
+        parent = parent->parent;
+      }
+      prev = maybe_min;
+      curr = maybe_min;
+      return *this;
+    }
+
+    Iterator operator--(int) {
+      Iterator tmp = *this;
+      --(*this);
+      return tmp;
     }
 
     bool operator==(const Iterator& other) const { return curr == other.curr; }
@@ -148,9 +186,12 @@ class BST {
     bool operator!=(const Iterator& other) const { return curr != other.curr; }
   };
 
-  Iterator begin() { return Iterator(root); }
+  Iterator begin() {
+    auto* min_n = min_node(root);
+    return Iterator(min_n, min_n);
+  }
 
-  Iterator end() { return Iterator(nullptr); }
+  Iterator end() { return Iterator(max_node(root), nullptr); }
 
   size_t size() const { return sz; }
 

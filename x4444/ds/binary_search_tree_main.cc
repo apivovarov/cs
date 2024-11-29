@@ -52,16 +52,47 @@ int main() {
     }
 
     auto it = t.begin();
-    while (it != t.end()) {
-      std::cerr << "*it: " << *it << std::endl;
-      ++it;
-    }
-    std::cerr << std::endl;
 
+    for (int i = 0; i < 3; ++i) {
+      std::cerr << "begin-to-end " << i << std::endl;
+      while (it != t.end()) {
+        std::cerr << *it++ << ",";
+      }
+      std::cerr << std::endl;
+      std::cerr << "back end-to-begin " << i << std::endl;
+      do {
+        std::cerr << *(--it) << ",";
+      } while (it != t.begin());
+      std::cerr << std::endl;
+    }
+
+    std::cerr << "for loop" << std::endl;
     for (const auto& v : t) {
       std::cerr << v << ", ";
     }
     std::cerr << std::endl;
+  }
+  {
+    x4444::ds::BST<float> t;
+    for (float i : {11., 1.1, 7., 9.1, 19., 4., 5., 23., 2., 9.1, 10., 3.1, 14.,
+                    21., 17., 16., 2., 18.}) {
+      t.insert(i);
+    }
+
+    auto ite = t.end();
+    for (int i = 0; i < 3; ++i) {
+      std::cerr << "end-to-begin " << i << std::endl;
+      do {
+        std::cerr << *(--ite) << ",";
+      } while (ite != t.begin());
+      std::cerr << std::endl;
+      std::cerr << "back begin-to-end " << i << std::endl;
+      while (ite != t.end()) {
+        std::cerr << *ite << ",";
+        ++ite;
+      }
+      std::cerr << std::endl;
+    }
   }
   std::cerr << "done" << std::endl;
 }
