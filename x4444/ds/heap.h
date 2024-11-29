@@ -67,7 +67,7 @@ class MinHeap {
   }
 
   void push(T&& v) {
-    vec.push_back(std::forward<T>(v));
+    vec.push_back(std::move(v));
     _push();
   }
 
