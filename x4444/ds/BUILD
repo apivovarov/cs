@@ -77,3 +77,14 @@ cc_binary(
     srcs = ["graph_main.cc"],
     deps = ["graph"]
 )
+
+cc_library(
+    name = "tree",
+    hdrs = ["tree.h"],
+)
+
+cc_binary(
+    name = "tree_main",
+    srcs = ["tree_main.cc"],
+    deps = ["tree"]
+)
