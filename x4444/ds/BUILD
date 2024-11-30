@@ -66,3 +66,14 @@ cc_binary(
     srcs = ["forward_list_main.cc"],
     deps = ["forward_list_lib"],
 )
+
+cc_library(
+    name = "graph",
+    hdrs = ["graph.h"],
+)
+
+cc_binary(
+    name = "graph_main",
+    srcs = ["graph_main.cc"],
+    deps = ["graph"]
+)
