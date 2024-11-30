@@ -34,9 +34,9 @@ void find_in_not_sorted() {
   int i = 1;
   while (i < sz) {
     int key = target - arrns[i];
-    if (ss.count(key) == 1) {
+    if (auto it = ss.find(key) != ss.end()) {
       std::cout << key << ", " << arrns[i] << std::endl;
-      ss.erase(key);
+      ss.erase(it);
     } else {
       ss.insert(arrns[i]);
     }

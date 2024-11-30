@@ -110,7 +110,7 @@ class HashSet {
     return false;
   }
 
-  void remove(T v) {
+  void erase(T v) {
     auto&& li = arr[hh(v) % arr.size()];
     size_t rem_cnt = li.remove(v);
     sz -= rem_cnt;

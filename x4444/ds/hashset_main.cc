@@ -32,8 +32,8 @@ int main() {
   std::cerr << "contains(492049093): " << std::boolalpha
             << hs.contains(492049093) << std::endl;
 
-  std::cerr << "remove(15): " << std::endl;
-  hs.remove(15);
+  std::cerr << "erase(15): " << std::endl;
+  hs.erase(15);
   std::cerr << "contains(15): " << std::boolalpha << hs.contains(15)
             << std::endl;
 
