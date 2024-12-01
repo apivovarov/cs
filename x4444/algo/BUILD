@@ -13,3 +13,8 @@ cc_binary(
     srcs = ["heap_sort.cc"],
     deps = ["//x4444/ds:heap_lib"]
 )
+
+cc_binary(
+    name = "dijkstra",
+    srcs = ["dijkstra.cc"],
+)
