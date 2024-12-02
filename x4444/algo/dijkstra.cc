@@ -38,35 +38,35 @@ struct Graph {
     adj[from].push_back({to, dist});
     adj[to].push_back({from, dist});
   }
-};
 
-std::vector<float> dijkstra(const Graph& gr, size_t src_id) {
-  // vector index - node id
-  // float value - distance from source node to destination (node id)
-  std::vector<float> dist(gr.size(), std::numeric_limits<float>::infinity());
-  std::priority_queue<Graph::Node, std::vector<Graph::Node>,
-                      std::greater<Graph::Node>>
-      pq;
-  pq.push({src_id, 0});
-  dist[src_id] = 0;
+  std::vector<float> dijkstra(size_t src_id) const {
+    // vector index - node id
+    // float value - distance from source node to destination (node id)
+    std::vector<float> dist(size(), std::numeric_limits<float>::infinity());
+    std::priority_queue<Graph::Node, std::vector<Graph::Node>,
+                        std::greater<Graph::Node>>
+        pq;
+    pq.push({src_id, 0});
+    dist[src_id] = 0;
 
-  while (!pq.empty()) {
-    const Graph::Node curr_node = pq.top();
-    pq.pop();
-    const size_t curr_id = curr_node.id;
-    const float best_curr_dist = dist[curr_id];
-    // Skip stale nodes (tasks) (if we already have a better path)
-    if (curr_node.dist_from_src > best_curr_dist) continue;
-    for (const Graph::Edge& edge : gr.adj[curr_id]) {
-      float newDist = best_curr_dist + edge.distance;
-      if (newDist < dist[edge.id]) {
-        dist[edge.id] = newDist;
-        pq.push({edge.id, newDist});
+    while (!pq.empty()) {
+      const Graph::Node curr_node = pq.top();
+      pq.pop();
+      const size_t curr_id = curr_node.id;
+      const float best_curr_dist = dist[curr_id];
+      // Skip stale nodes (tasks) (if we already have a better path)
+      if (curr_node.dist_from_src > best_curr_dist) continue;
+      for (const Graph::Edge& edge : adj[curr_id]) {
+        float newDist = best_curr_dist + edge.distance;
+        if (newDist < dist[edge.id]) {
+          dist[edge.id] = newDist;
+          pq.push({edge.id, newDist});
+        }
       }
     }
+    return dist;
   }
-  return dist;
-}
+};
 
 int main() {
   Graph gr(7);
@@ -80,7 +80,7 @@ int main() {
   gr.add_edge(4, 3, 11.0);
   gr.add_edge(6, 3, 2.0);
 
-  std::vector<float> res = dijkstra(gr, 1);
+  std::vector<float> res = gr.dijkstra(1);
 
   std::cout << std::setw(4) << "Node"
             << ":" << std::setw(8) << "Dist" << std::endl;
