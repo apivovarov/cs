@@ -1,6 +1,6 @@
 #include <iostream>
+#include <algorithm>
 #include <array>
-#include <string>
 
 template <typename T>
 void merge(T* dest, T* b, int bsz, T* c, int csz) {
@@ -25,7 +25,7 @@ void merge(T* dest, T* b, int bsz, T* c, int csz) {
 
 template <typename T>
 void _sort(T* a, int sz, T* tmp) {
-  if (sz == 1) return;
+  if (sz <= 1) return;
   // divide a in two parts
   T* b = a;
   int bsz = (sz + 1) / 2;
@@ -37,11 +37,12 @@ void _sort(T* a, int sz, T* tmp) {
   // merge sorted parts into tmp buffer
   merge(tmp, b, bsz, c, csz);
   // copy sorted tmp array back to a
-  memcpy(a, tmp, sz * sizeof(T));
+  std::copy(tmp, tmp + sz, a);
 }
 
 template <typename T>
 void sort(T* a, int sz) {
+  if (sz <= 0) return; // Handle edge case
   T* tmp = new T[sz];
   _sort(a, sz, tmp);
   delete[] tmp;
@@ -52,7 +53,7 @@ int main() {
                              -7., 7., 8., 5.5,  2., 6.,  18.3, 4.44};
   sort(a.data(), a.size());
 
-  for (auto&& v : a) {
+  for (const auto& v : a) {
     std::cout << v << " ";
   }
   std::cout << std::endl;
