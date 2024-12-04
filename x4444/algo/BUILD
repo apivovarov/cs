@@ -18,3 +18,8 @@ cc_binary(
     name = "dijkstra",
     srcs = ["dijkstra.cc"],
 )
+
+cc_binary(
+    name = "knapsack",
+    srcs = ["knapsack.cc"],
+)
