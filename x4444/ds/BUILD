@@ -88,3 +88,8 @@ cc_binary(
     srcs = ["tree_main.cc"],
     deps = ["tree"]
 )
+
+cc_binary(
+    name = "lru_cache",
+    srcs = ["lru_cache.cc"],
+)
