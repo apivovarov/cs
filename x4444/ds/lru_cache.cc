@@ -15,6 +15,7 @@ struct LruCache {
     const Value* operator->() const { return vPtr; }
     bool operator==(const ConstRes& other) const { return vPtr == other.vPtr; }
     bool operator!=(const ConstRes& other) const { return vPtr != other.vPtr; }
+    operator bool() const { return vPtr != nullptr; }
   };
   ConstRes not_found() const { return ConstRes(nullptr); }
   std::list<Key> li;
@@ -52,7 +53,7 @@ struct LruCache {
     Node& n = map_it->second;
     li.erase(n.it);
     n.it = li.insert(li.begin(), key);
-    return ConstRes(&(n.val));
+    return ConstRes(&n.val);
   }
 
   void dump_li() const {
