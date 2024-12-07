@@ -28,3 +28,8 @@ cc_binary(
     name = "quick_sort",
     srcs = ["quick_sort.cc"],
 )
+
+cc_binary(
+    name = "group_anagrams",
+    srcs = ["group_anagrams.cc"],
+)
