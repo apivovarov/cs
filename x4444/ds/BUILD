@@ -93,3 +93,8 @@ cc_binary(
     name = "lru_cache",
     srcs = ["lru_cache.cc"],
 )
+
+cc_binary(
+    name = "lfu_cache",
+    srcs = ["lfu_cache.cc"],
+)
