@@ -1,7 +1,8 @@
+#include <algorithm>
 #include <iostream>
-#include <vector>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 std::string getKey(std::string s) {
   // To get anogram key we can sort chars - O(n log(n))
