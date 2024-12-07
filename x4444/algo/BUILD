@@ -23,3 +23,8 @@ cc_binary(
     name = "knapsack",
     srcs = ["knapsack.cc"],
 )
+
+cc_binary(
+    name = "quick_sort",
+    srcs = ["quick_sort.cc"],
+)
