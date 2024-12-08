@@ -33,3 +33,8 @@ cc_binary(
     name = "group_anagrams",
     srcs = ["group_anagrams.cc"],
 )
+
+cc_binary(
+    name = "geometric_hash",
+    srcs = ["geometric_hash.cc"],
+)
