@@ -17,3 +17,8 @@ cc_binary(
     name = "major_elem",
     srcs = ["major_elem.cc"],
 )
+
+cc_binary(
+    name = "rotate_arr",
+    srcs = ["rotate_arr.cc"],
+)
