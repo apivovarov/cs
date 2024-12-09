@@ -47,3 +47,8 @@ cc_binary(
     name = "len_of_last_word",
     srcs = ["len_of_last_word.cc"],
 )
+
+cc_binary(
+    name = "graph_valid_binary_tree",
+    srcs = ["graph_valid_binary_tree.cc"],
+)
