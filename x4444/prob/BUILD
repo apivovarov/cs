@@ -22,3 +22,13 @@ cc_binary(
     name = "rotate_arr",
     srcs = ["rotate_arr.cc"],
 )
+
+cc_binary(
+    name = "max_profit",
+    srcs = ["max_profit.cc"],
+)
+
+cc_binary(
+    name = "max_profit2",
+    srcs = ["max_profit2.cc"],
+)
