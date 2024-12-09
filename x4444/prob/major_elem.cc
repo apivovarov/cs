@@ -6,6 +6,29 @@ class Solution {
     if (nums.empty()) return 0;
     if (nums.size() <= 2) return nums[0];
 
+    int el = nums[0];
+    int count = 1;
+    for (int i = 1; i < nums.size(); ++i) {
+      if (count == 0) {
+        el = nums[i];
+        count = 1;
+      } else {
+        if (nums[i] == el)
+          ++count;
+        else
+          --count;
+      }
+    }
+    return el;
+  }
+};
+
+class Solution2 {
+ public:
+  int majorityElement(std::vector<int>& nums) {
+    if (nums.empty()) return 0;
+    if (nums.size() <= 2) return nums[0];
+
     int maj_el0;
     int maj_freq0 = 0;
     int maj_el1;
