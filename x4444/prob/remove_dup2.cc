@@ -14,11 +14,11 @@ class Solution {
     while (pn < nums.size()) {
       if (nums[pn] > nums[pp]) {
         ++pp;
-        std::swap(nums[pp], nums[pn]);
+        nums[pp] = nums[pn];
         dup = false;
       } else if (!dup) {
         ++pp;
-        std::swap(nums[pp], nums[pn]);
+        nums[pp] = nums[pn];
         dup = true;
       }
       ++pn;

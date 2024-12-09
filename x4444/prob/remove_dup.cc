@@ -12,7 +12,7 @@ class Solution {
     while (pn < nums.size()) {
       if (nums[pn] > nums[pp]) {
         ++pp;
-        std::swap(nums[pp], nums[pn]);
+        nums[pp] = nums[pn];
       }
       ++pn;
     }
