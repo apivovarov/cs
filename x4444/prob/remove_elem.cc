@@ -6,6 +6,26 @@ class Solution {
  public:
   int removeElement(std::vector<int>& nums, int val) {
     if (nums.empty()) return 0;
+    if (nums.size() == 1) return nums[0] == val ? 0 : 1;
+    int low = 0;
+    int high = nums.size() - 1;
+
+    while (low <= high) {
+      if (nums[low] == val) {
+        if (nums[high] != val) nums[low] = nums[high];
+        --high;
+      } else {
+        ++low;
+      }
+    }
+    return high + 1;
+  }
+};
+
+class Solution2 {
+ public:
+  int removeElement(std::vector<int>& nums, int val) {
+    if (nums.empty()) return 0;
     int low = 0;
     int high = nums.size() - 1;
 
@@ -18,7 +38,7 @@ class Solution {
     while (low < high) {
       if (nums[low] == val) {
         // swap
-        std::swap(nums[low], nums[high]);
+        nums[low] = nums[high];
         // find next non-val id moving from back
         --high;
         while (high > low && nums[high] == val) {
@@ -45,11 +65,15 @@ void test(std::vector<int> vec, int expected) {
 int main() {
   test({}, 0);
   test({3}, 0);
+  test({3, 3}, 0);
   test({2}, 1);
+
+  test({2, 2}, 2);
   test({3, 2}, 1);
   test({2, 3}, 1);
   test({3, 2, 3}, 1);
   test({2, 3, 2}, 2);
   test({3, 3, 2, 3}, 1);
   test({3, 2, 2, 3}, 2);
+  test({3, 2, 3, 3}, 1);
 }
