@@ -37,3 +37,8 @@ cc_binary(
     name = "climb_stairs",
     srcs = ["climb_stairs.cc"],
 )
+
+cc_binary(
+    name = "longest_common_prefix",
+    srcs = ["longest_common_prefix.cc"],
+)
