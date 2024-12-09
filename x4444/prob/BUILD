@@ -42,3 +42,8 @@ cc_binary(
     name = "longest_common_prefix",
     srcs = ["longest_common_prefix.cc"],
 )
+
+cc_binary(
+    name = "len_of_last_word",
+    srcs = ["len_of_last_word.cc"],
+)
