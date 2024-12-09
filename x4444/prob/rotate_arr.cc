@@ -10,11 +10,13 @@ class Solution {
   }
 
   void rotate(std::vector<int>& nums, int k) {
+    int sz = nums.size();
+    if (sz < 2) return;
+    k %= sz;
     if (k == 0) return;
-    if (nums.size() < 2) return;
-    reverse(nums, 0, nums.size() - k);
-    reverse(nums, nums.size() - k, nums.size());
-    reverse(nums, 0, nums.size());
+    reverse(nums, 0, sz - k);
+    reverse(nums, sz - k, sz);
+    reverse(nums, 0, sz);
   }
 };
 
