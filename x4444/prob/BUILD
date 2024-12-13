@@ -52,3 +52,8 @@ cc_binary(
     name = "graph_valid_binary_tree",
     srcs = ["graph_valid_binary_tree.cc"],
 )
+
+cc_binary(
+    name = "permutations",
+    srcs = ["permutations.cc"],
+)
