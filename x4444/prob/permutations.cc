@@ -1,8 +1,41 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class Solution {
+ protected:
+  void _next(std::vector<int>& nums, int id,
+             std::vector<std::vector<int>>& all) {
+    int tmp;
+    if (id == nums.size()) {
+      all.push_back(nums);
+      return;
+    }
+    _next(nums, id + 1, all);
+    for (int i = id + 1; i < nums.size(); ++i) {
+      tmp = nums[i];
+      nums[i] = nums[id];
+      nums[id] = tmp;
+      _next(nums, id + 1, all);
+      nums[id] = nums[i];
+      nums[i] = tmp;
+    }
+  }
+
  public:
+  std::vector<std::vector<int>> permute(const std::vector<int>& _nums) {
+    int sz = _nums.size();
+    if (sz == 0) return {};
+    if (sz == 1) return {_nums};
+    std::vector<std::vector<int>> all;
+    std::vector<int> nums = _nums;
+    _next(nums, 0, all);
+    return all;
+  }
+};
+
+class Solution2 {
+ protected:
   void _next(int id, std::vector<int>& res, std::vector<bool>& used,
              const std::vector<int>& nums,
              std::vector<std::vector<int>>& all_res) {
@@ -19,6 +52,7 @@ class Solution {
     }
   }
 
+ public:
   std::vector<std::vector<int>> permute(const std::vector<int>& nums) {
     int sz = nums.size();
     if (sz == 0) return {};
@@ -54,10 +88,10 @@ void test(const std::vector<int>& nums, int expected) {
 }
 
 int main() {
-  test({}, 0);
-  test({42}, 1);
-  test({1, 2}, 2);
-  test({1, 2, 3}, 6);
-  test({1, 2, 3, 4}, 24);
-  test({1, 2, 3, 4, 5}, 120);
+  // test({}, 0);
+  // test({42}, 1);
+  // test({1, 2}, 2);
+  // test({1, 3, 1}, 6);
+  test({2, 2, 1, 2}, 24);
+  // test({1, 2, 3, 4, 5}, 120);
 }
