@@ -57,3 +57,8 @@ cc_binary(
     name = "permutations",
     srcs = ["permutations.cc"],
 )
+
+cc_binary(
+    name = "permutations2",
+    srcs = ["permutations2.cc"],
+)
