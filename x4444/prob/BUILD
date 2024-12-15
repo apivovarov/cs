@@ -67,3 +67,8 @@ cc_binary(
     name = "can_jump",
     srcs = ["can_jump.cc"],
 )
+
+cc_binary(
+    name = "max_sub_array",
+    srcs = ["max_sub_array.cc"],
+)
