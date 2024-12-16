@@ -77,3 +77,8 @@ cc_binary(
     name = "max_sub_array",
     srcs = ["max_sub_array.cc"],
 )
+
+cc_binary(
+    name = "h_index",
+    srcs = ["h_index.cc"],
+)
