@@ -69,6 +69,11 @@ cc_binary(
 )
 
 cc_binary(
+    name = "jump_game2",
+    srcs = ["jump_game2.cc"],
+)
+
+cc_binary(
     name = "max_sub_array",
     srcs = ["max_sub_array.cc"],
 )
