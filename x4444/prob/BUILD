@@ -64,8 +64,8 @@ cc_binary(
 )
 
 cc_binary(
-    name = "can_jump",
-    srcs = ["can_jump.cc"],
+    name = "jump_game",
+    srcs = ["jump_game.cc"],
 )
 
 cc_binary(
