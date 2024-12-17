@@ -82,3 +82,8 @@ cc_binary(
     name = "h_index",
     srcs = ["h_index.cc"],
 )
+
+cc_binary(
+    name = "first_occurrence",
+    srcs = ["first_occurrence.cc"],
+)
