@@ -87,3 +87,13 @@ cc_binary(
     name = "first_occurrence",
     srcs = ["first_occurrence.cc"],
 )
+
+cc_binary(
+    name = "foo",
+    srcs = ["foo.cc"],
+)
+
+cc_binary(
+    name = "random_set",
+    srcs = ["random_set.cc"],
+)
