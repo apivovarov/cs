@@ -97,3 +97,8 @@ cc_binary(
     name = "random_set",
     srcs = ["random_set.cc"],
 )
+
+cc_binary(
+    name = "prod_except_self",
+    srcs = ["prod_except_self.cc"],
+)
