@@ -102,3 +102,8 @@ cc_binary(
     name = "prod_except_self",
     srcs = ["prod_except_self.cc"],
 )
+
+cc_binary(
+    name = "gas_station",
+    srcs = ["gas_station.cc"],
+)
