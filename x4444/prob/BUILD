@@ -107,3 +107,8 @@ cc_binary(
     name = "gas_station",
     srcs = ["gas_station.cc"],
 )
+
+cc_binary(
+    name = "candy",
+    srcs = ["candy.cc"],
+)
