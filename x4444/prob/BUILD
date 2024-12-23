@@ -112,3 +112,8 @@ cc_binary(
     name = "candy",
     srcs = ["candy.cc"],
 )
+
+cc_binary(
+    name = "roman_to_int",
+    srcs = ["roman_to_int.cc"],
+)
