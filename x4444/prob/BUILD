@@ -117,3 +117,8 @@ cc_binary(
     name = "roman_to_int",
     srcs = ["roman_to_int.cc"],
 )
+
+cc_binary(
+    name = "int_to_roman",
+    srcs = ["int_to_roman.cc"],
+)
