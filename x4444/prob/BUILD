@@ -122,3 +122,8 @@ cc_binary(
     name = "int_to_roman",
     srcs = ["int_to_roman.cc"],
 )
+
+cc_binary(
+    name = "reverse_words",
+    srcs = ["reverse_words.cc"],
+)
