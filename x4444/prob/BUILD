@@ -142,3 +142,8 @@ cc_binary(
     name = "text_justification",
     srcs = ["text_justification.cc"],
 )
+
+cc_binary(
+    name = "valid_palindrome",
+    srcs = ["valid_palindrome.cc"],
+)
