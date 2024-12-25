@@ -147,3 +147,8 @@ cc_binary(
     name = "valid_palindrome",
     srcs = ["valid_palindrome.cc"],
 )
+
+cc_binary(
+    name = "is_subseq",
+    srcs = ["is_subseq.cc"],
+)
