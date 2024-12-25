@@ -132,3 +132,8 @@ cc_binary(
     name = "trap",
     srcs = ["trap.cc"],
 )
+
+cc_binary(
+    name = "zigzag",
+    srcs = ["zigzag.cc"],
+)
