@@ -127,3 +127,8 @@ cc_binary(
     name = "reverse_words",
     srcs = ["reverse_words.cc"],
 )
+
+cc_binary(
+    name = "trap",
+    srcs = ["trap.cc"],
+)
