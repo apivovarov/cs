@@ -152,3 +152,8 @@ cc_binary(
     name = "is_subseq",
     srcs = ["is_subseq.cc"],
 )
+
+cc_binary(
+    name = "two_sum_sorted",
+    srcs = ["two_sum_sorted.cc"],
+)
