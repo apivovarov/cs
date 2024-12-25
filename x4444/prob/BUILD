@@ -137,3 +137,8 @@ cc_binary(
     name = "zigzag",
     srcs = ["zigzag.cc"],
 )
+
+cc_binary(
+    name = "text_justification",
+    srcs = ["text_justification.cc"],
+)
