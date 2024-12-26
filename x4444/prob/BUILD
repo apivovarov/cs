@@ -167,3 +167,8 @@ cc_binary(
     name = "3sum",
     srcs = ["3sum.cc"],
 )
+
+cc_binary(
+    name = "min_size_subarray",
+    srcs = ["min_size_subarray.cc"],
+)
