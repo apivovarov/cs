@@ -162,3 +162,8 @@ cc_binary(
     name = "container_with_most_water",
     srcs = ["container_with_most_water.cc"],
 )
+
+cc_binary(
+    name = "3sum",
+    srcs = ["3sum.cc"],
+)
