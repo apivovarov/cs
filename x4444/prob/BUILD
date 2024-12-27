@@ -172,3 +172,8 @@ cc_binary(
     name = "min_size_subarray",
     srcs = ["min_size_subarray.cc"],
 )
+
+cc_binary(
+    name = "longest_substr_wo_repeating",
+    srcs = ["longest_substr_wo_repeating.cc"],
+)
