@@ -177,3 +177,8 @@ cc_binary(
     name = "longest_substr_wo_repeating",
     srcs = ["longest_substr_wo_repeating.cc"],
 )
+
+cc_binary(
+    name = "substring_w_concatenation_all_words",
+    srcs = ["substring_w_concatenation_all_words.cc"],
+)
