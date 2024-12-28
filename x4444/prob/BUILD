@@ -192,3 +192,8 @@ cc_binary(
     name = "valid_sudoku",
     srcs = ["valid_sudoku.cc"],
 )
+
+cc_binary(
+    name = "spiral_matrix",
+    srcs = ["spiral_matrix.cc"],
+)
