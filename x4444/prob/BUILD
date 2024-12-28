@@ -182,3 +182,8 @@ cc_binary(
     name = "substring_w_concatenation_all_words",
     srcs = ["substring_w_concatenation_all_words.cc"],
 )
+
+cc_binary(
+    name = "min_window_substr",
+    srcs = ["min_window_substr.cc"],
+)
