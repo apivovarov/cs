@@ -187,3 +187,8 @@ cc_binary(
     name = "min_window_substr",
     srcs = ["min_window_substr.cc"],
 )
+
+cc_binary(
+    name = "valid_sudoku",
+    srcs = ["valid_sudoku.cc"],
+)
