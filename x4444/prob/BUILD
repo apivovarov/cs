@@ -207,3 +207,8 @@ cc_binary(
     name = "set_matrix_zeros",
     srcs = ["set_matrix_zeros.cc"],
 )
+
+cc_binary(
+    name = "game_of_life",
+    srcs = ["game_of_life.cc"],
+)
