@@ -202,3 +202,8 @@ cc_binary(
     name = "rotate_matrix",
     srcs = ["rotate_matrix.cc"],
 )
+
+cc_binary(
+    name = "set_matrix_zeros",
+    srcs = ["set_matrix_zeros.cc"],
+)
