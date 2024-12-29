@@ -197,3 +197,8 @@ cc_binary(
     name = "spiral_matrix",
     srcs = ["spiral_matrix.cc"],
 )
+
+cc_binary(
+    name = "rotate_matrix",
+    srcs = ["rotate_matrix.cc"],
+)
