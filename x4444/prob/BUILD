@@ -222,3 +222,8 @@ cc_binary(
     name = "isomorphic_strings",
     srcs = ["isomorphic_strings.cc"],
 )
+
+cc_binary(
+    name = "group_anagrams",
+    srcs = ["group_anagrams.cc"],
+)
