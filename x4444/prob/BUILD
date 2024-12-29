@@ -217,3 +217,8 @@ cc_binary(
     name = "ransom_note",
     srcs = ["ransom_note.cc"],
 )
+
+cc_binary(
+    name = "isomorphic_strings",
+    srcs = ["isomorphic_strings.cc"],
+)
