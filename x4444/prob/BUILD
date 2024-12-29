@@ -227,3 +227,8 @@ cc_binary(
     name = "group_anagrams",
     srcs = ["group_anagrams.cc"],
 )
+
+cc_binary(
+    name = "restore_alphabet",
+    srcs = ["restore_alphabet.cc"],
+)
