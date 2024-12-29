@@ -212,3 +212,8 @@ cc_binary(
     name = "game_of_life",
     srcs = ["game_of_life.cc"],
 )
+
+cc_binary(
+    name = "ransom_note",
+    srcs = ["ransom_note.cc"],
+)
