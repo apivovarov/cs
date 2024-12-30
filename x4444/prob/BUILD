@@ -237,3 +237,8 @@ cc_binary(
     name = "valid_anagram",
     srcs = ["valid_anagram.cc"],
 )
+
+cc_binary(
+    name = "word_pattern",
+    srcs = ["word_pattern.cc"],
+)
