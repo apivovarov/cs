@@ -159,6 +159,11 @@ cc_binary(
 )
 
 cc_binary(
+    name = "two_sum",
+    srcs = ["two_sum.cc"],
+)
+
+cc_binary(
     name = "container_with_most_water",
     srcs = ["container_with_most_water.cc"],
 )
