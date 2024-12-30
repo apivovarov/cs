@@ -17,14 +17,14 @@ class Solution {
 
       auto it = map.find(c);
       if (it == map.end()) {
-        map[c] = w;
+        map.emplace(c, w);
       } else if (w != it->second) {
         return false;
       }
 
       auto revit = revmap.find(w);
       if (revit == revmap.end()) {
-        revmap[w] = c;
+        revmap.emplace(w, c);
       } else if (c != revit->second) {
         return false;
       }
