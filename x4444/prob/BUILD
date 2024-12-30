@@ -232,3 +232,8 @@ cc_binary(
     name = "restore_alphabet",
     srcs = ["restore_alphabet.cc"],
 )
+
+cc_binary(
+    name = "valid_anagram",
+    srcs = ["valid_anagram.cc"],
+)
