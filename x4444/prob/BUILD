@@ -252,3 +252,8 @@ cc_binary(
     name = "happy_number",
     srcs = ["happy_number.cc"],
 )
+
+cc_binary(
+    name = "contains_duplicate_2",
+    srcs = ["contains_duplicate_2.cc"],
+)
