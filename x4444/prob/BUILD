@@ -257,3 +257,8 @@ cc_binary(
     name = "contains_duplicate_2",
     srcs = ["contains_duplicate_2.cc"],
 )
+
+cc_binary(
+    name = "longest_conseq_seq",
+    srcs = ["longest_conseq_seq.cc"],
+)
