@@ -6,7 +6,7 @@ class Solution {
  public:
   bool containsNearbyDuplicate(const std::vector<int>& nums, int k) {
     if (nums.size() < 2 || k < 1) return false;
-    std::unordered_set<int> window;
+    std::unordered_set<int> window(k + 1);
     window.insert(nums[0]);
     for (int i = 1; i < nums.size(); ++i) {
       if (!window.insert(nums[i]).second) return true;
