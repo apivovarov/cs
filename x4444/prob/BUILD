@@ -247,3 +247,8 @@ cc_binary(
     name = "word_pattern",
     srcs = ["word_pattern.cc"],
 )
+
+cc_binary(
+    name = "happy_number",
+    srcs = ["happy_number.cc"],
+)
