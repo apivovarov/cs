@@ -1,9 +1,31 @@
 #include <iostream>
-#include <vector>
 #include <unordered_map>
+#include <vector>
+#include <unordered_set>
 #include <cstdlib>
 
 class Solution {
+ public:
+  int longestConsecutive(const std::vector<int>& nums) {
+    if (nums.size() < 2) return nums.size();
+    if (nums.size() == 2) return std::abs(nums[0] - nums[1]) == 1 ? 2 : 1;
+
+    std::unordered_set<int> nums_set(nums.begin(), nums.end());
+    int maxL = 1;
+    for (int n : nums) {
+      if (nums_set.find(n - 1) != nums_set.end()) continue;
+      if (nums_set.erase(n) == 0) continue;  // Already processed
+      int e = n;
+      while (nums_set.erase(++e)) {
+      }
+      int L = e - n;
+      if (L > maxL) maxL = L;
+    }
+    return maxL;
+  }
+};
+
+class Solution0 {
  public:
   int longestConsecutive(const std::vector<int>& nums) {
     if (nums.size() < 2) return nums.size();
