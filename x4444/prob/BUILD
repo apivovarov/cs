@@ -267,3 +267,8 @@ cc_binary(
     name = "summary_ranges",
     srcs = ["summary_ranges.cc"],
 )
+
+cc_binary(
+    name = "merge_intervals",
+    srcs = ["merge_intervals.cc"],
+)
