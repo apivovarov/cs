@@ -272,3 +272,8 @@ cc_binary(
     name = "merge_intervals",
     srcs = ["merge_intervals.cc"],
 )
+
+cc_binary(
+    name = "insert_interval",
+    srcs = ["insert_interval.cc"],
+)
