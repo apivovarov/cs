@@ -262,3 +262,8 @@ cc_binary(
     name = "longest_conseq_seq",
     srcs = ["longest_conseq_seq.cc"],
 )
+
+cc_binary(
+    name = "summary_ranges",
+    srcs = ["summary_ranges.cc"],
+)
