@@ -287,3 +287,8 @@ cc_binary(
     name = "valid_parentheses",
     srcs = ["valid_parentheses.cc"],
 )
+
+cc_binary(
+    name = "canonical_path",
+    srcs = ["canonical_path.cc"],
+)
