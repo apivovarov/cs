@@ -282,3 +282,8 @@ cc_binary(
     name = "min_arrows_burst_baloons",
     srcs = ["min_arrows_burst_baloons.cc"],
 )
+
+cc_binary(
+    name = "valid_parentheses",
+    srcs = ["valid_parentheses.cc"],
+)
