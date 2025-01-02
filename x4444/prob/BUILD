@@ -292,3 +292,8 @@ cc_binary(
     name = "canonical_path",
     srcs = ["canonical_path.cc"],
 )
+
+cc_binary(
+    name = "min_stack",
+    srcs = ["min_stack.cc"],
+)
