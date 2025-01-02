@@ -277,3 +277,8 @@ cc_binary(
     name = "insert_interval",
     srcs = ["insert_interval.cc"],
 )
+
+cc_binary(
+    name = "min_arrows_burst_baloons",
+    srcs = ["min_arrows_burst_baloons.cc"],
+)
