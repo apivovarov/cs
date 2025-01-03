@@ -307,3 +307,8 @@ cc_binary(
     name = "basic_calc",
     srcs = ["basic_calc.cc"],
 )
+
+cc_binary(
+    name = "lru_cache",
+    srcs = ["lru_cache.cc"],
+)
