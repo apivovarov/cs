@@ -322,3 +322,8 @@ cc_binary(
     name = "add_two_numbers",
     srcs = ["add_two_numbers.cc"],
 )
+
+cc_binary(
+    name = "merge_two_sorted_lists",
+    srcs = ["merge_two_sorted_lists.cc"],
+)
