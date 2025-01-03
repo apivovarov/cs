@@ -302,3 +302,8 @@ cc_binary(
     name = "eval_rpn",
     srcs = ["eval_rpn.cc"],
 )
+
+cc_binary(
+    name = "basic_calc",
+    srcs = ["basic_calc.cc"],
+)
