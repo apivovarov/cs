@@ -297,3 +297,8 @@ cc_binary(
     name = "min_stack",
     srcs = ["min_stack.cc"],
 )
+
+cc_binary(
+    name = "eval_rpn",
+    srcs = ["eval_rpn.cc"],
+)
