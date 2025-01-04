@@ -382,3 +382,8 @@ cc_binary(
     name = "is_same_tree",
     srcs = ["is_same_tree.cc"],
 )
+
+cc_binary(
+    name = "invert_tree",
+    srcs = ["invert_tree.cc"],
+)
