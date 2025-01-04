@@ -342,3 +342,8 @@ cc_binary(
     name = "reverse_linked_list2",
     srcs = ["reverse_linked_list2.cc"],
 )
+
+cc_binary(
+    name = "reverse_nodes_in_k_groups",
+    srcs = ["reverse_nodes_in_k_groups.cc"],
+)
