@@ -347,3 +347,8 @@ cc_binary(
     name = "reverse_nodes_in_k_groups",
     srcs = ["reverse_nodes_in_k_groups.cc"],
 )
+
+cc_binary(
+    name = "rotate_linked_list_right",
+    srcs = ["rotate_linked_list_right.cc"],
+)
