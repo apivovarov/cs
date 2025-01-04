@@ -352,3 +352,8 @@ cc_binary(
     name = "rotate_linked_list_right",
     srcs = ["rotate_linked_list_right.cc"],
 )
+
+cc_binary(
+    name = "remove_dup_linked_list",
+    srcs = ["remove_dup_linked_list.cc"],
+)
