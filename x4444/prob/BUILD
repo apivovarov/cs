@@ -372,3 +372,8 @@ cc_binary(
     name = "partition_list",
     srcs = ["partition_list.cc"],
 )
+
+cc_binary(
+    name = "max_depth_of_binary_tree",
+    srcs = ["max_depth_of_binary_tree.cc"],
+)
