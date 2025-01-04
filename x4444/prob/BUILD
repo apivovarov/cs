@@ -377,3 +377,8 @@ cc_binary(
     name = "max_depth_of_binary_tree",
     srcs = ["max_depth_of_binary_tree.cc"],
 )
+
+cc_binary(
+    name = "is_same_tree",
+    srcs = ["is_same_tree.cc"],
+)
