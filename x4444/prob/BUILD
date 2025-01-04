@@ -367,3 +367,8 @@ cc_binary(
     name = "remove_from_end_of_list",
     srcs = ["remove_from_end_of_list.cc"],
 )
+
+cc_binary(
+    name = "partition_list",
+    srcs = ["partition_list.cc"],
+)
