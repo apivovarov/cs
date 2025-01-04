@@ -332,3 +332,13 @@ cc_binary(
     name = "copy_list_with_random_pointer",
     srcs = ["copy_list_with_random_pointer.cc"],
 )
+
+cc_binary(
+    name = "reverse_linked_list",
+    srcs = ["reverse_linked_list.cc"],
+)
+
+cc_binary(
+    name = "reverse_linked_list2",
+    srcs = ["reverse_linked_list2.cc"],
+)
