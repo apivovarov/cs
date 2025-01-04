@@ -387,3 +387,8 @@ cc_binary(
     name = "invert_tree",
     srcs = ["invert_tree.cc"],
 )
+
+cc_binary(
+    name = "is_symmetric_tree",
+    srcs = ["is_symmetric_tree.cc"],
+)
