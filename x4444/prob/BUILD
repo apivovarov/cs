@@ -357,3 +357,8 @@ cc_binary(
     name = "remove_dup_linked_list",
     srcs = ["remove_dup_linked_list.cc"],
 )
+
+cc_binary(
+    name = "remove_dup_linked_list2",
+    srcs = ["remove_dup_linked_list2.cc"],
+)
