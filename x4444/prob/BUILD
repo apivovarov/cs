@@ -327,3 +327,8 @@ cc_binary(
     name = "merge_two_sorted_lists",
     srcs = ["merge_two_sorted_lists.cc"],
 )
+
+cc_binary(
+    name = "copy_list_with_random_pointer",
+    srcs = ["copy_list_with_random_pointer.cc"],
+)
