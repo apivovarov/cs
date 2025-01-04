@@ -38,22 +38,16 @@ class Solution {
 };
 
 int main() {
-  ListNode* n1 = new ListNode(1);
-  ListNode* n2 = new ListNode(2);
-  ListNode* n3 = new ListNode(3);
-  ListNode* n4 = new ListNode(4);
-  ListNode* n5 = new ListNode(5);
-  n1->next = n2;
-  n2->next = n3;
-  n3->next = n4;
-  n4->next = n5;
+  ListNode* n = nullptr;
+  for (int i = 5; i >= 1; --i) {
+    n = new ListNode(i, n);
+  }
 
   Solution sol;
-  ListNode* N1 = sol.reverseBetween(n1, 2, 4);
-  ListNode* N2 = N1->next;
-  ListNode* N3 = N2->next;
-  ListNode* N4 = N3->next;
-  ListNode* N5 = N4->next;
-  std::cerr << N1->val << " " << N2->val << " " << N3->val << " " << N4->val
-            << " " << N5->val << std::endl;
+  ListNode* N1 = sol.reverseBetween(n, 2, 4);
+  while (N1) {
+    std::cerr << N1->val << " ";
+    N1 = N1->next;
+  }
+  std::cerr << std::endl;
 }
