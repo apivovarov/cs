@@ -392,3 +392,8 @@ cc_binary(
     name = "is_symmetric_tree",
     srcs = ["is_symmetric_tree.cc"],
 )
+
+cc_binary(
+    name = "construct_binary_tree",
+    srcs = ["construct_binary_tree.cc"],
+)
