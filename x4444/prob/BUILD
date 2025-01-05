@@ -402,3 +402,8 @@ cc_binary(
     name = "construct_binary_tree_from_in_and_post_order",
     srcs = ["construct_binary_tree_from_in_and_post_order.cc"],
 )
+
+cc_binary(
+    name = "populating_next_right_pointers",
+    srcs = ["populating_next_right_pointers.cc"],
+)
