@@ -422,3 +422,8 @@ cc_binary(
     name = "sum_root_to_leaf_numbers",
     srcs = ["sum_root_to_leaf_numbers.cc"],
 )
+
+cc_binary(
+    name = "binary_tree_max_path_sum",
+    srcs = ["binary_tree_max_path_sum.cc"],
+)
