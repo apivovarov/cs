@@ -407,3 +407,8 @@ cc_binary(
     name = "populating_next_right_pointers",
     srcs = ["populating_next_right_pointers.cc"],
 )
+
+cc_binary(
+    name = "flatten_binary_tree_to_linked_list",
+    srcs = ["flatten_binary_tree_to_linked_list.cc"],
+)
