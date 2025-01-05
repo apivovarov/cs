@@ -427,3 +427,8 @@ cc_binary(
     name = "binary_tree_max_path_sum",
     srcs = ["binary_tree_max_path_sum.cc"],
 )
+
+cc_binary(
+    name = "bst_iterator",
+    srcs = ["bst_iterator.cc"],
+)
