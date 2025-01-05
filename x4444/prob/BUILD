@@ -412,3 +412,8 @@ cc_binary(
     name = "flatten_binary_tree_to_linked_list",
     srcs = ["flatten_binary_tree_to_linked_list.cc"],
 )
+
+cc_binary(
+    name = "binary_tree_path_sum",
+    srcs = ["binary_tree_path_sum.cc"],
+)
