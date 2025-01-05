@@ -397,3 +397,8 @@ cc_binary(
     name = "construct_binary_tree_from_pre_and_in_order",
     srcs = ["construct_binary_tree_from_pre_and_in_order.cc"],
 )
+
+cc_binary(
+    name = "construct_binary_tree_from_in_and_post_order",
+    srcs = ["construct_binary_tree_from_in_and_post_order.cc"],
+)
