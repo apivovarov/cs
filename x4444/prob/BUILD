@@ -447,3 +447,8 @@ cc_binary(
     name = "binary_tree_right_side_view",
     srcs = ["binary_tree_right_side_view.cc"],
 )
+
+cc_binary(
+    name = "avg_levels_binary_tree",
+    srcs = ["avg_levels_binary_tree.cc"],
+)
