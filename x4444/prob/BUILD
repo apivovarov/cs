@@ -432,3 +432,8 @@ cc_binary(
     name = "bst_iterator",
     srcs = ["bst_iterator.cc"],
 )
+
+cc_binary(
+    name = "count_complete_tree_nodes",
+    srcs = ["count_complete_tree_nodes.cc"],
+)
