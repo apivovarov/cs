@@ -437,3 +437,8 @@ cc_binary(
     name = "count_complete_tree_nodes",
     srcs = ["count_complete_tree_nodes.cc"],
 )
+
+cc_binary(
+    name = "lca_binary_tree",
+    srcs = ["lca_binary_tree.cc"],
+)
