@@ -462,3 +462,8 @@ cc_binary(
     name = "binary_tree_zigzag_level_order_traversal",
     srcs = ["binary_tree_zigzag_level_order_traversal.cc"],
 )
+
+cc_binary(
+    name = "bst_min_diff",
+    srcs = ["bst_min_diff.cc"],
+)
