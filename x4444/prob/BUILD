@@ -452,3 +452,8 @@ cc_binary(
     name = "avg_levels_binary_tree",
     srcs = ["avg_levels_binary_tree.cc"],
 )
+
+cc_binary(
+    name = "binary_tree_level_order_traversal",
+    srcs = ["binary_tree_level_order_traversal.cc"],
+)
