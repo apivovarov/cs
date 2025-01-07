@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include <vector>
 
 struct TreeNode {
@@ -30,6 +31,30 @@ class Solution {
     if (!root) return {};
     std::vector<std::vector<int>> res;
     visit(root, 0, res);
+    return res;
+  }
+};
+
+class SolutionBFS {
+ public:
+  std::vector<std::vector<int>> levelOrder(TreeNode *root) {
+    if (!root) return {};
+    std::vector<std::vector<int>> res;
+
+    std::queue<TreeNode *> qu;
+    qu.push(root);
+
+    while (!qu.empty()) {
+      int sz = qu.size();
+      res.push_back({});
+      for (int i = 0; i < sz; ++i) {
+        TreeNode *node = qu.front();
+        qu.pop();
+        res.back().push_back(node->val);
+        if (node->left) qu.push(node->left);
+        if (node->right) qu.push(node->right);
+      }
+    }
     return res;
   }
 };
@@ -91,6 +116,7 @@ void test(const std::vector<int> &inp,
           const std::vector<std::vector<int>> &expected) {
   TreeNode *root = makeTree(inp);
   Solution sol;
+  // SolutionBFS sol;
   std::vector<std::vector<int>> res = sol.levelOrder(root);
 
   if (res != expected) {
