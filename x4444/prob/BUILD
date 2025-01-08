@@ -472,3 +472,8 @@ cc_binary(
     name = "bst_k_th_smallest",
     srcs = ["bst_k_th_smallest.cc"],
 )
+
+cc_binary(
+    name = "is_valid_bst",
+    srcs = ["is_valid_bst.cc"],
+)
