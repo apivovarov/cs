@@ -477,3 +477,8 @@ cc_binary(
     name = "is_valid_bst",
     srcs = ["is_valid_bst.cc"],
 )
+
+cc_binary(
+    name = "number_of_islands",
+    srcs = ["number_of_islands.cc"],
+)
