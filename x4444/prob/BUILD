@@ -482,3 +482,8 @@ cc_binary(
     name = "number_of_islands",
     srcs = ["number_of_islands.cc"],
 )
+
+cc_binary(
+    name = "surrounded_regions",
+    srcs = ["surrounded_regions.cc"],
+)
