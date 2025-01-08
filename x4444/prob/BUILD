@@ -467,3 +467,8 @@ cc_binary(
     name = "bst_min_diff",
     srcs = ["bst_min_diff.cc"],
 )
+
+cc_binary(
+    name = "bst_k_th_smallest",
+    srcs = ["bst_k_th_smallest.cc"],
+)
