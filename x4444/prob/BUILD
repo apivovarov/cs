@@ -487,3 +487,8 @@ cc_binary(
     name = "surrounded_regions",
     srcs = ["surrounded_regions.cc"],
 )
+
+cc_binary(
+    name = "clone_graph",
+    srcs = ["clone_graph.cc"],
+)
