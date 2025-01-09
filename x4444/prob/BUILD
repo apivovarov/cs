@@ -492,3 +492,8 @@ cc_binary(
     name = "clone_graph",
     srcs = ["clone_graph.cc"],
 )
+
+cc_binary(
+    name = "evaluate_division",
+    srcs = ["evaluate_division.cc"],
+)
