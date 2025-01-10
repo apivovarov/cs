@@ -1,11 +1,76 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <cmath>
+
+// 399. Evaluate Division
+// Union-Find approach
+class Solution {
+  std::unordered_map<std::string, std::string> parent;
+  std::unordered_map<std::string, double> weights;
+
+  std::string getTrueParent(const std::string& node) {
+    std::string par = parent.at(node);
+    if (par == node) return node;
+    const std::string& par2 = getTrueParent(par);
+    if (par == par2) return par2;
+    parent[node] = par2;
+    weights[node] *= weights.at(par);
+    return par2;
+  }
+
+  void unite(const std::string& a, const std::string& b, double w) {
+    const std::string p0 = getTrueParent(a);
+    const std::string p1 = getTrueParent(b);
+
+    if (p0 != p1) {
+      parent[p0] = p1;
+      weights[p0] = w * weights[b] / weights[a];
+    }
+  }
+
+ public:
+  std::vector<double> calcEquation(
+      const std::vector<std::vector<std::string>>& equations,
+      const std::vector<double>& values,
+      const std::vector<std::vector<std::string>>& queries) {
+    if (equations.empty() || queries.empty()) return {};
+
+    for (int i = 0; i < equations.size(); ++i) {
+      auto& vv = equations[i];
+      parent.try_emplace(vv[0], vv[0]);
+      weights.try_emplace(vv[0], 1.0);
+      parent.try_emplace(vv[1], vv[1]);
+      weights.try_emplace(vv[1], 1.0);
+      unite(vv[0], vv[1], values[i]);
+    }
+
+    std::vector<double> res;
+
+    for (int i = 0; i < queries.size(); ++i) {
+      auto& vv = queries[i];
+
+      if (parent.find(vv[0]) == parent.end() ||
+          parent.find(vv[1]) == parent.end() ||
+          getTrueParent(vv[0]) != getTrueParent(vv[1])) {
+        res.push_back(-1.0);
+        continue;
+      }
+
+      double w0 = weights.at(vv[0]);
+      double w1 = weights.at(vv[1]);
+      res.push_back(w0 / w1);
+    }
+
+    return res;
+  }
+};
 
 // 399. Evaluate Division
 // DFS approach
-class Solution {
+class Solution2 {
  public:
   inline std::unordered_map<std::string,
                             std::vector<std::pair<std::string, double>>>
@@ -76,13 +141,21 @@ std::ostream& operator<<(std::ostream& os, std::vector<T> arr) {
   return os;
 }
 
+bool compareRtol(double a, double b) {
+  double rtol = 1e-4;
+  const double small_number = 1e-9;  // Small constant to avoid division by zero
+  return std::fabs(a - b) <=
+         rtol * std::max({std::fabs(a), std::fabs(b), small_number});
+}
+
 void test(const std::vector<std::vector<std::string>>& equations,
           const std::vector<double>& values,
           const std::vector<std::vector<std::string>>& queries,
           const std::vector<double>& expected) {
   Solution sol;
   std::vector<double> res = sol.calcEquation(equations, values, queries);
-  if (res != expected) {
+  if (res.size() != expected.size() ||
+      !std::equal(res.begin(), res.end(), expected.begin(), compareRtol)) {
     std::cerr << "ERROR: res: " << res << ", expected: " << expected
               << std::endl;
   }
@@ -105,4 +178,18 @@ int main() {
        {24.0, 1. / 24.0, 12.0, 2.0});
   test({{"x", "y"}}, {0.5}, {{"y", "x"}, {"x", "x"}, {"y", "y"}},
        {2.0, 1.0, 1.0});
+
+  test({{"x1", "x2"}, {"x2", "x3"}, {"x1", "x4"}, {"x2", "x5"}},
+       {3.0, 0.5, 3.4, 5.6},
+       {{"x2", "x4"},
+        {"x1", "x5"},
+        {"x1", "x3"},
+        {"x5", "x5"},
+        {"x5", "x1"},
+        {"x3", "x4"},
+        {"x4", "x3"},
+        {"x6", "x6"},
+        {"x0", "x0"}},
+       {1.13333, 16.80000, 1.50000, 1.00000, 0.0595238, 2.26667, 0.441176,
+        -1.00000, -1.00000});
 }
