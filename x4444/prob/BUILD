@@ -497,3 +497,8 @@ cc_binary(
     name = "evaluate_division",
     srcs = ["evaluate_division.cc"],
 )
+
+cc_binary(
+    name = "course_schedule",
+    srcs = ["course_schedule.cc"],
+)
