@@ -517,3 +517,8 @@ cc_binary(
     name = "min_genetic_mutation",
     srcs = ["min_genetic_mutation.cc"],
 )
+
+cc_binary(
+    name = "word_ladder",
+    srcs = ["word_ladder.cc"],
+)
