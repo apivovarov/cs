@@ -512,3 +512,8 @@ cc_binary(
     name = "snakes_and_ladders",
     srcs = ["snakes_and_ladders.cc"],
 )
+
+cc_binary(
+    name = "min_genetic_mutation",
+    srcs = ["min_genetic_mutation.cc"],
+)
