@@ -502,3 +502,8 @@ cc_binary(
     name = "course_schedule",
     srcs = ["course_schedule.cc"],
 )
+
+cc_binary(
+    name = "course_schedule_2",
+    srcs = ["course_schedule_2.cc"],
+)
