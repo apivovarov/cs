@@ -35,6 +35,7 @@ class Solution {
     std::queue<int> qu;
     qu.push(0);
     std::vector<bool> visited(N * N);
+    visited[0] = true;
     int cnt = 1;
     // BFS
     while (!qu.empty()) {
