@@ -552,3 +552,8 @@ cc_binary(
     name = "permutations3",
     srcs = ["permutations3.cc"],
 )
+
+cc_binary(
+    name = "combination_sum",
+    srcs = ["combination_sum.cc"],
+)
