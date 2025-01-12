@@ -532,3 +532,8 @@ cc_binary(
     name = "word_dictionary",
     srcs = ["word_dictionary.cc"],
 )
+
+cc_binary(
+    name = "word_search_2",
+    srcs = ["word_search_2.cc"],
+)
