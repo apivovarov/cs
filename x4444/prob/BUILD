@@ -527,3 +527,8 @@ cc_binary(
     name = "trie",
     srcs = ["trie.cc"],
 )
+
+cc_binary(
+    name = "word_dictionary",
+    srcs = ["word_dictionary.cc"],
+)
