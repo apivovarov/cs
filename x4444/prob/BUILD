@@ -537,3 +537,8 @@ cc_binary(
     name = "word_search_2",
     srcs = ["word_search_2.cc"],
 )
+
+cc_binary(
+    name = "phone_letter_combinations",
+    srcs = ["phone_letter_combinations.cc"],
+)
