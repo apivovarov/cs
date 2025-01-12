@@ -16,7 +16,7 @@ class Trie {
   Node root{};
 
  public:
-  void insert(std::string word) {
+  void insert(const std::string& word) {
     Node* n = &root;
     for (char c : word) {
       if (!n->children[c - 'a']) {
@@ -27,7 +27,7 @@ class Trie {
     n->term = true;
   }
 
-  bool search(std::string word) {
+  bool search(const std::string& word) {
     Node* n = &root;
     for (char c : word) {
       if (!n->children[c - 'a']) {
@@ -38,7 +38,7 @@ class Trie {
     return n->term;
   }
 
-  bool startsWith(std::string prefix) {
+  bool startsWith(const std::string& prefix) {
     Node* n = &root;
     for (char c : prefix) {
       if (!n->children[c - 'a']) {
