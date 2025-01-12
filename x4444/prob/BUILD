@@ -522,3 +522,8 @@ cc_binary(
     name = "word_ladder",
     srcs = ["word_ladder.cc"],
 )
+
+cc_binary(
+    name = "trie",
+    srcs = ["trie.cc"],
+)
