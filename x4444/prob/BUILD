@@ -542,3 +542,8 @@ cc_binary(
     name = "phone_letter_combinations",
     srcs = ["phone_letter_combinations.cc"],
 )
+
+cc_binary(
+    name = "combinations",
+    srcs = ["combinations.cc"],
+)
