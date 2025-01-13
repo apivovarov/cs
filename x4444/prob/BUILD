@@ -587,3 +587,8 @@ cc_binary(
     name = "construct_quad_tree",
     srcs = ["construct_quad_tree.cc"],
 )
+
+cc_binary(
+    name = "merge_k_sorted_lists",
+    srcs = ["merge_k_sorted_lists.cc"],
+)
