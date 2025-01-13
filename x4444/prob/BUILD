@@ -557,3 +557,8 @@ cc_binary(
     name = "combination_sum",
     srcs = ["combination_sum.cc"],
 )
+
+cc_binary(
+    name = "n_queens_2",
+    srcs = ["n_queens_2.cc"],
+)
