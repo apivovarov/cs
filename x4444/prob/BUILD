@@ -572,3 +572,8 @@ cc_binary(
     name = "word_search",
     srcs = ["word_search.cc"],
 )
+
+cc_binary(
+    name = "sorted_array_to_bst",
+    srcs = ["sorted_array_to_bst.cc"],
+)
