@@ -562,3 +562,8 @@ cc_binary(
     name = "n_queens_2",
     srcs = ["n_queens_2.cc"],
 )
+
+cc_binary(
+    name = "generate_parentheses",
+    srcs = ["generate_parentheses.cc"],
+)
