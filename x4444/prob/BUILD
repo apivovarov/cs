@@ -567,3 +567,8 @@ cc_binary(
     name = "generate_parentheses",
     srcs = ["generate_parentheses.cc"],
 )
+
+cc_binary(
+    name = "word_search",
+    srcs = ["word_search.cc"],
+)
