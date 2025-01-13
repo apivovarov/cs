@@ -582,3 +582,8 @@ cc_binary(
     name = "sort_list",
     srcs = ["sort_list.cc"],
 )
+
+cc_binary(
+    name = "construct_quad_tree",
+    srcs = ["construct_quad_tree.cc"],
+)
