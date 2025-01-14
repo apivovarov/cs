@@ -612,3 +612,8 @@ cc_binary(
     name = "find_peak_element",
     srcs = ["find_peak_element.cc"],
 )
+
+cc_binary(
+    name = "search_in_rotated_array",
+    srcs = ["search_in_rotated_array.cc"],
+)
