@@ -597,3 +597,8 @@ cc_binary(
     name = "merge_k_sorted_lists",
     srcs = ["merge_k_sorted_lists.cc"],
 )
+
+cc_binary(
+    name = "search_insert_position",
+    srcs = ["search_insert_position.cc"],
+)
