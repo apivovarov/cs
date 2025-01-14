@@ -607,3 +607,8 @@ cc_binary(
     name = "search_2d_matrix",
     srcs = ["search_2d_matrix.cc"],
 )
+
+cc_binary(
+    name = "find_peak_element",
+    srcs = ["find_peak_element.cc"],
+)
