@@ -79,6 +79,11 @@ cc_binary(
 )
 
 cc_binary(
+    name = "max_circular_sub_array",
+    srcs = ["max_circular_sub_array.cc"],
+)
+
+cc_binary(
     name = "h_index",
     srcs = ["h_index.cc"],
 )
