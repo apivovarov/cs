@@ -602,3 +602,8 @@ cc_binary(
     name = "search_insert_position",
     srcs = ["search_insert_position.cc"],
 )
+
+cc_binary(
+    name = "search_2d_matrix",
+    srcs = ["search_2d_matrix.cc"],
+)
