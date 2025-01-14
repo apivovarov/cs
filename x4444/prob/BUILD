@@ -617,3 +617,8 @@ cc_binary(
     name = "search_in_rotated_array",
     srcs = ["search_in_rotated_array.cc"],
 )
+
+cc_binary(
+    name = "find_first_last_pos_in_sorted_array",
+    srcs = ["find_first_last_pos_in_sorted_array.cc"],
+)
