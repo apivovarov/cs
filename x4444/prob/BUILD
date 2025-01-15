@@ -632,3 +632,8 @@ cc_binary(
     name = "median_sorted_array",
     srcs = ["median_sorted_array.cc"],
 )
+
+cc_binary(
+    name = "find_k_largest",
+    srcs = ["find_k_largest.cc"],
+)
