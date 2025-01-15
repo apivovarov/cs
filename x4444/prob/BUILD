@@ -627,3 +627,8 @@ cc_binary(
     name = "find_min_rotated_sorted_array",
     srcs = ["find_min_rotated_sorted_array.cc"],
 )
+
+cc_binary(
+    name = "median_sorted_array",
+    srcs = ["median_sorted_array.cc"],
+)
