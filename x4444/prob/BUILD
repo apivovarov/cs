@@ -642,3 +642,8 @@ cc_binary(
     name = "k_smallest_pairs",
     srcs = ["k_smallest_pairs.cc"],
 )
+
+cc_binary(
+    name = "ipo",
+    srcs = ["ipo.cc"],
+)
