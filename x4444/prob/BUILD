@@ -637,3 +637,8 @@ cc_binary(
     name = "find_k_largest",
     srcs = ["find_k_largest.cc"],
 )
+
+cc_binary(
+    name = "k_smallest_pairs",
+    srcs = ["k_smallest_pairs.cc"],
+)
