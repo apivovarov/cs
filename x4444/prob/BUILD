@@ -677,3 +677,8 @@ cc_binary(
     name = "single_number_2",
     srcs = ["single_number_2.cc"],
 )
+
+cc_binary(
+    name = "range_bitwise_and",
+    srcs = ["range_bitwise_and.cc"],
+)
