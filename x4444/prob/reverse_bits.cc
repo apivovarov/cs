@@ -6,9 +6,10 @@ class Solution {
   uint32_t reverseBits(uint32_t n) {
     if (n == 0 || n == 0b11111111111111111111111111111111) return n;
     uint32_t res = 0;
-    for (int i = 0; i < 32; ++i) {
+    int i = 32;
+    while(n) {
       uint32_t last = n & 1;
-      last <<= (31 - i);
+      last <<= --i;
       res |= last;
       n >>= 1;
     }
