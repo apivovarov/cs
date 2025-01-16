@@ -662,3 +662,8 @@ cc_binary(
     name = "reverse_bits",
     srcs = ["reverse_bits.cc"],
 )
+
+cc_binary(
+    name = "hamming_weight",
+    srcs = ["hamming_weight.cc"],
+)
