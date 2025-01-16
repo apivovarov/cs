@@ -692,3 +692,8 @@ cc_binary(
     name = "palindrome_number",
     srcs = ["palindrome_number.cc"],
 )
+
+cc_binary(
+    name = "plus_one",
+    srcs = ["plus_one.cc"],
+)
