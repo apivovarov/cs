@@ -667,3 +667,8 @@ cc_binary(
     name = "hamming_weight",
     srcs = ["hamming_weight.cc"],
 )
+
+cc_binary(
+    name = "single_number",
+    srcs = ["single_number.cc"],
+)
