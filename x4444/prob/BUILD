@@ -657,3 +657,8 @@ cc_binary(
     name = "add_binary",
     srcs = ["add_binary.cc"],
 )
+
+cc_binary(
+    name = "reverse_bits",
+    srcs = ["reverse_bits.cc"],
+)
