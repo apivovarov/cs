@@ -647,3 +647,8 @@ cc_binary(
     name = "ipo",
     srcs = ["ipo.cc"],
 )
+
+cc_binary(
+    name = "median_finder",
+    srcs = ["median_finder.cc"],
+)
