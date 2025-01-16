@@ -672,3 +672,8 @@ cc_binary(
     name = "single_number",
     srcs = ["single_number.cc"],
 )
+
+cc_binary(
+    name = "single_number_2",
+    srcs = ["single_number_2.cc"],
+)
