@@ -19,11 +19,7 @@ class Solution {
     std::vector<int> stats(32);
 
     for (int v : nums) {
-      // count sign bit and down it (needed for right shift)
-      stats[31] += (v >> 31) & 1;
-      v &= 0b01111111111111111111111111111111;
-      // count renaining bits
-      for (int i = 0; i < 31 && v; ++i) {
+      for (int i = 0; i < 32 && v; ++i) {
         stats[i] += v & 1;
         v >>= 1;
       }
