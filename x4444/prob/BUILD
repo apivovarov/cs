@@ -652,3 +652,8 @@ cc_binary(
     name = "median_finder",
     srcs = ["median_finder.cc"],
 )
+
+cc_binary(
+    name = "add_binary",
+    srcs = ["add_binary.cc"],
+)
