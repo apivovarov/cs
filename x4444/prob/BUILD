@@ -687,3 +687,8 @@ cc_binary(
     name = "range_bitwise_or",
     srcs = ["range_bitwise_or.cc"],
 )
+
+cc_binary(
+    name = "palindrome_number",
+    srcs = ["palindrome_number.cc"],
+)
