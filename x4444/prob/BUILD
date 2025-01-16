@@ -682,3 +682,8 @@ cc_binary(
     name = "range_bitwise_and",
     srcs = ["range_bitwise_and.cc"],
 )
+
+cc_binary(
+    name = "range_bitwise_or",
+    srcs = ["range_bitwise_or.cc"],
+)
