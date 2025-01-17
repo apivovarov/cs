@@ -732,3 +732,8 @@ cc_binary(
     name = "coin_change",
     srcs = ["coin_change.cc"],
 )
+
+cc_binary(
+    name = "word_break",
+    srcs = ["word_break.cc"],
+)
