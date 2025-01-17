@@ -702,3 +702,8 @@ cc_binary(
     name = "sqrt",
     srcs = ["sqrt.cc"],
 )
+
+cc_binary(
+    name = "power",
+    srcs = ["power.cc"],
+)
