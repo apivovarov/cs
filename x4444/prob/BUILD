@@ -712,3 +712,8 @@ cc_binary(
     name = "factorial_trailing_zeros",
     srcs = ["factorial_trailing_zeros.cc"],
 )
+
+cc_binary(
+    name = "max_points",
+    srcs = ["max_points.cc"],
+)
