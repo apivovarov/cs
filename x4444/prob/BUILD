@@ -722,3 +722,8 @@ cc_binary(
     name = "gcd",
     srcs = ["gcd.cc"],
 )
+
+cc_binary(
+    name = "house_robber",
+    srcs = ["house_robber.cc"],
+)
