@@ -727,3 +727,8 @@ cc_binary(
     name = "house_robber",
     srcs = ["house_robber.cc"],
 )
+
+cc_binary(
+    name = "coin_change",
+    srcs = ["coin_change.cc"],
+)
