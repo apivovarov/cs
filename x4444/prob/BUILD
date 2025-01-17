@@ -707,3 +707,8 @@ cc_binary(
     name = "power",
     srcs = ["power.cc"],
 )
+
+cc_binary(
+    name = "factorial_trailing_zeros",
+    srcs = ["factorial_trailing_zeros.cc"],
+)
