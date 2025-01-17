@@ -697,3 +697,8 @@ cc_binary(
     name = "plus_one",
     srcs = ["plus_one.cc"],
 )
+
+cc_binary(
+    name = "sqrt",
+    srcs = ["sqrt.cc"],
+)
