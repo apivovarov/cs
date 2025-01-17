@@ -717,3 +717,8 @@ cc_binary(
     name = "max_points",
     srcs = ["max_points.cc"],
 )
+
+cc_binary(
+    name = "gcd",
+    srcs = ["gcd.cc"],
+)
