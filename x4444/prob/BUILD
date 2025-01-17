@@ -737,3 +737,8 @@ cc_binary(
     name = "word_break",
     srcs = ["word_break.cc"],
 )
+
+cc_binary(
+    name = "longest_increasing_subseq",
+    srcs = ["longest_increasing_subseq.cc"],
+)
