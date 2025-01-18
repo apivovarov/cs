@@ -772,3 +772,8 @@ cc_binary(
     name = "edit_distance",
     srcs = ["edit_distance.cc"],
 )
+
+cc_binary(
+    name = "longest_palindrome",
+    srcs = ["longest_palindrome.cc"],
+)
