@@ -752,3 +752,8 @@ cc_binary(
     name = "min_path_sum",
     srcs = ["min_path_sum.cc"],
 )
+
+cc_binary(
+    name = "unique_path_2",
+    srcs = ["unique_path_2.cc"],
+)
