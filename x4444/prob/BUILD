@@ -762,3 +762,8 @@ cc_binary(
     name = "maximal_square",
     srcs = ["maximal_square.cc"],
 )
+
+cc_binary(
+    name = "interleaving_string",
+    srcs = ["interleaving_string.cc"],
+)
