@@ -15,23 +15,22 @@ class Solution {
       return 1;
     }
 
-    std::vector<std::vector<int>> dp(rsz, std::vector<int>(csz, 0));
-    dp[0][0] = 1;
+    std::vector<int> dp(csz, 0);
+    dp[0] = 1;
 
     for (int i = 0; i < rsz; ++i) {
       for (int j = 0; j < csz; ++j) {
-        if (i == 0 && j == 0) continue;
-        // keep 0 in dp cell if obstacle
-        if (obstacleGrid[i][j]) continue;
-        int s1 = 0;
-        int s2 = 0;
-        if (i > 0) s1 = dp[i - 1][j];
-        if (j > 0) s2 = dp[i][j - 1];
-        int s = s1 + s2;
-        dp[i][j] = s;
+        // set 0 in dp cell if obstacle
+        if (obstacleGrid[i][j]) {
+          dp[j] = 0;
+          continue;
+        }
+        if (j > 0) {
+          dp[j] += dp[j - 1];
+        }
       }
     }
-    return dp[rsz - 1][csz - 1];
+    return dp[csz - 1];
   }
 };
 
@@ -46,6 +45,7 @@ void test(const std::vector<std::vector<int>>& obstacleGrid, int expected) {
 
 int main() {
   test({{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}, 2);
+  test({{0, 0, 0}, {1, 1, 0}, {0, 0, 0}}, 1);
   test({{0, 1}, {0, 0}}, 1);
   test({{1, 0}}, 0);
   test({{0, 0, 1}}, 0);
