@@ -742,3 +742,8 @@ cc_binary(
     name = "longest_increasing_subseq",
     srcs = ["longest_increasing_subseq.cc"],
 )
+
+cc_binary(
+    name = "triangle",
+    srcs = ["triangle.cc"],
+)
