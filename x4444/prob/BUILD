@@ -747,3 +747,8 @@ cc_binary(
     name = "triangle",
     srcs = ["triangle.cc"],
 )
+
+cc_binary(
+    name = "min_path_sum",
+    srcs = ["min_path_sum.cc"],
+)
