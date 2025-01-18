@@ -767,3 +767,8 @@ cc_binary(
     name = "interleaving_string",
     srcs = ["interleaving_string.cc"],
 )
+
+cc_binary(
+    name = "edit_distance",
+    srcs = ["edit_distance.cc"],
+)
