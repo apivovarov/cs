@@ -34,6 +34,11 @@ cc_binary(
 )
 
 cc_binary(
+    name = "max_profit3",
+    srcs = ["max_profit3.cc"],
+)
+
+cc_binary(
     name = "climb_stairs",
     srcs = ["climb_stairs.cc"],
 )
