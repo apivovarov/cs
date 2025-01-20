@@ -434,6 +434,11 @@ cc_binary(
 )
 
 cc_binary(
+    name = "binary_tree_path_sum_3",
+    srcs = ["binary_tree_path_sum_3.cc"],
+)
+
+cc_binary(
     name = "sum_root_to_leaf_numbers",
     srcs = ["sum_root_to_leaf_numbers.cc"],
 )

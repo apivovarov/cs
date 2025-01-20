@@ -1,5 +1,8 @@
 #include <iostream>
+#include <vector>
+#include <unordered_map>
 
+// Definition for a binary tree node.
 struct TreeNode {
   int val;
   TreeNode *left;
@@ -10,22 +13,30 @@ struct TreeNode {
       : val(x), left(left), right(right) {}
 };
 
-// Path Sum
+// Path Sum III
 class Solution {
  public:
-  bool visit(TreeNode *n, int targetSum, int curSum) {
-    // NLR
-    if (!n) return false;
-    curSum += n->val;
-    if (curSum == targetSum && !n->left && !n->right) return true;
-    if (visit(n->left, targetSum, curSum)) return true;
-    if (visit(n->right, targetSum, curSum)) return true;
-    return false;
+  void visit(TreeNode *root, int targetSum,
+             std::unordered_map<long, int> &prefixSumMap, long prefixSum,
+             int &cnt) {
+    if (!root) return;
+    prefixSum += root->val;
+    auto it = prefixSumMap.find(prefixSum - targetSum);
+    if (it != prefixSumMap.end()) {
+      cnt += it->second;
+    }
+    ++prefixSumMap[prefixSum];
+    visit(root->left, targetSum, prefixSumMap, prefixSum, cnt);
+    visit(root->right, targetSum, prefixSumMap, prefixSum, cnt);
+    --prefixSumMap[prefixSum];
   }
 
-  bool hasPathSum(TreeNode *root, int targetSum) {
-    if (!root) return false;
-    return visit(root, targetSum, 0);
+  int pathSum(TreeNode *root, int targetSum) {
+    int cnt = 0;
+    std::unordered_map<long, int> prefixSumMap;
+    ++prefixSumMap[0];
+    visit(root, targetSum, prefixSumMap, 0, cnt);
+    return cnt;
   }
 };
 
@@ -71,23 +82,26 @@ TreeNode *makeTree(const std::vector<int> &vv) {
   return nv[0];
 }
 
-void test(const std::vector<int> &inp, int targetSum, bool expected) {
+void test(const std::vector<int> &inp, int targetSum, int expected) {
   TreeNode *root = makeTree(inp);
   Solution sol;
-  bool res = sol.hasPathSum(root, targetSum);
+  int res = sol.pathSum(root, targetSum);
 
   if (res != expected) {
-    std::cerr << "ERROR:" << std::endl;
+    std::cerr << "ERROR: res: " << res << ", expected: " << expected
+              << std::endl;
   }
   delTree(root);
 }
 
 int main() {
-  test({5, 4, 8, 11, N, 13, 4, 7, 2, N, N, N, 1}, 22, true);
-  test({1, 2, 3}, 5, false);
-  test({1, N, 3}, 4, true);
-  test({}, 5, false);
-  test({}, 0, false);
-  test({10}, 10, true);
-  test({10}, 9, false);
+  test({5, 4, 8, 11, N, 13, 4, 7, 2, N, N, N, 1}, 22, 3);
+  test({1, 2, 3}, 5, 0);
+  test({1, N, 3}, 4, 1);
+  test({}, 5, 0);
+  test({}, 0, 0);
+  test({10}, 10, 1);
+  test({10}, 9, 0);
+  test({10, 5, -3, 3, 2, N, 11, 3, -2, N, 1}, 8, 3);
+  test({1, 0, 1, 1, 2, 0, -1, 0, 1, -1, 0, -1, 0, 1, 0}, 2, 13);
 }
