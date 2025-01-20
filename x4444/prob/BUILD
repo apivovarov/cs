@@ -802,3 +802,8 @@ cc_binary(
     name = "search_in_bst",
     srcs = ["search_in_bst.cc"],
 )
+
+cc_binary(
+    name = "delete_node_in_bst",
+    srcs = ["delete_node_in_bst.cc"],
+)
