@@ -787,3 +787,8 @@ cc_binary(
     name = "longest_palindrome",
     srcs = ["longest_palindrome.cc"],
 )
+
+cc_binary(
+    name = "greatest_common_divisor_of_strings",
+    srcs = ["greatest_common_divisor_of_strings.cc"],
+)
