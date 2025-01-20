@@ -797,3 +797,8 @@ cc_binary(
     name = "greatest_common_divisor_of_strings",
     srcs = ["greatest_common_divisor_of_strings.cc"],
 )
+
+cc_binary(
+    name = "search_in_bst",
+    srcs = ["search_in_bst.cc"],
+)
